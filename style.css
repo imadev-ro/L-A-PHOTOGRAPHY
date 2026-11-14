@@ -948,40 +948,51 @@ body {
     }
 }
 
+
 /* ==========================================
    BUTOANE DESCOPERA MAI MULT
    ========================================== */
 
-.service-button {
+.service-box .service-button,
+.service-box .service-button:link,
+.service-box .service-button:visited {
+    order: 5;
+
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    align-self: center;
+
     gap: 12px;
 
-    margin-top: auto;
-    padding: 11px 23px;
+    width: auto;
+    min-width: 190px;
 
-    min-width: 185px;
+    margin: 12px auto 5px;
+    padding: 12px 23px;
 
     background: linear-gradient(
         135deg,
-        #d8bd7a,
+        #d9c184,
         #b29450
     );
 
-    border: 1px solid #e2ca91;
-    border-radius: 3px;
+    border: 1px solid #e4cc91;
+    border-radius: 4px;
 
-    color: #171d20;
+    color: #171d20 !important;
 
     font-family: Georgia, serif;
     font-size: 14px;
     font-weight: bold;
 
-    text-decoration: none;
+    text-decoration: none !important;
+    text-align: center;
     letter-spacing: 0.3px;
 
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.22);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
+
+    cursor: pointer;
 
     transition:
         background 0.3s ease,
@@ -991,39 +1002,48 @@ body {
         box-shadow 0.3s ease;
 }
 
-.service-button span {
+.service-box .service-button span {
+    color: #171d20;
     font-size: 19px;
     line-height: 1;
 
     transition: transform 0.3s ease;
 }
 
-.service-button:hover {
+/* EFECT LA TRECEREA MOUSE-ULUI */
+
+.service-box .service-button:hover {
     background: linear-gradient(
         135deg,
-        #ead49c,
+        #f0dca9,
         #c5a45e
     );
 
-    color: #111619;
+    color: #111619 !important;
 
     border-color: #f0dca9;
 
+    text-decoration: none !important;
+
     transform: translateY(-3px);
 
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 7px 17px rgba(0, 0, 0, 0.35);
 }
 
-.service-button:hover span {
-    transform: translateX(4px);
+.service-box .service-button:hover span {
+    transform: translateX(5px);
 }
 
-.service-button:focus-visible {
+/* FOCUS */
+
+.service-box .service-button:focus-visible {
     outline: 2px solid #ead49c;
     outline-offset: 4px;
 }
 
-.service-button:active {
+/* CLICK */
+
+.service-box .service-button:active {
     transform: translateY(-1px);
 }
 
@@ -1034,13 +1054,13 @@ body {
 }
 
 .service-box p {
-    margin-bottom: 16px;
+    margin-bottom: 5px;
 }
 
 /* TELEFOANE */
 
 @media (max-width: 520px) {
-    .service-button {
+    .service-box .service-button {
         min-width: 195px;
         padding: 12px 22px;
         font-size: 14px;
