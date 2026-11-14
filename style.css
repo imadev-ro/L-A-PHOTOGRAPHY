@@ -948,51 +948,40 @@ body {
     }
 }
 
-
 /* ==========================================
    BUTOANE DESCOPERA MAI MULT
    ========================================== */
 
-.service-box .service-button,
-.service-box .service-button:link,
-.service-box .service-button:visited {
-    order: 5;
-
+.service-button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    align-self: center;
-
     gap: 12px;
 
-    width: auto;
-    min-width: 190px;
+    margin-top: auto;
+    padding: 11px 23px;
 
-    margin: 12px auto 5px;
-    padding: 12px 23px;
+    min-width: 185px;
 
     background: linear-gradient(
         135deg,
-        #d9c184,
+        #d8bd7a,
         #b29450
     );
 
-    border: 1px solid #e4cc91;
-    border-radius: 4px;
+    border: 1px solid #e2ca91;
+    border-radius: 3px;
 
-    color: #171d20 !important;
+    color: #171d20;
 
     font-family: Georgia, serif;
     font-size: 14px;
     font-weight: bold;
 
-    text-decoration: none !important;
-    text-align: center;
+    text-decoration: none;
     letter-spacing: 0.3px;
 
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
-
-    cursor: pointer;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.22);
 
     transition:
         background 0.3s ease,
@@ -1002,48 +991,39 @@ body {
         box-shadow 0.3s ease;
 }
 
-.service-box .service-button span {
-    color: #171d20;
+.service-button span {
     font-size: 19px;
     line-height: 1;
 
     transition: transform 0.3s ease;
 }
 
-/* EFECT LA TRECEREA MOUSE-ULUI */
-
-.service-box .service-button:hover {
+.service-button:hover {
     background: linear-gradient(
         135deg,
-        #f0dca9,
+        #ead49c,
         #c5a45e
     );
 
-    color: #111619 !important;
+    color: #111619;
 
     border-color: #f0dca9;
 
-    text-decoration: none !important;
-
     transform: translateY(-3px);
 
-    box-shadow: 0 7px 17px rgba(0, 0, 0, 0.35);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
 }
 
-.service-box .service-button:hover span {
-    transform: translateX(5px);
+.service-button:hover span {
+    transform: translateX(4px);
 }
 
-/* FOCUS */
-
-.service-box .service-button:focus-visible {
+.service-button:focus-visible {
     outline: 2px solid #ead49c;
     outline-offset: 4px;
 }
 
-/* CLICK */
-
-.service-box .service-button:active {
+.service-button:active {
     transform: translateY(-1px);
 }
 
@@ -1054,15 +1034,99 @@ body {
 }
 
 .service-box p {
-    margin-bottom: 5px;
+    margin-bottom: 16px;
 }
 
 /* TELEFOANE */
 
 @media (max-width: 520px) {
-    .service-box .service-button {
+    .service-button {
         min-width: 195px;
         padding: 12px 22px;
         font-size: 14px;
+    }
+}
+
+/* ==========================================
+   POZITIONARE CORECTA CARDURI SI BUTOANE
+   ========================================== */
+
+.service-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+}
+
+.service-box h2 {
+    order: 1;
+}
+
+.service-box img {
+    order: 2;
+}
+
+.service-box .gold-line {
+    order: 3;
+}
+
+.service-box p {
+    order: 4;
+    margin-bottom: 12px;
+}
+
+.service-box .service-button {
+    order: 5;
+
+    margin-top: auto;
+    margin-bottom: 5px;
+
+    flex-shrink: 0;
+}
+
+/* Pe telefon, cardurile isi pastreaza inaltimea naturala */
+
+@media (max-width: 520px) {
+    .service-box {
+        height: auto;
+        min-height: 0;
+    }
+
+    .service-box .service-button {
+        margin-top: 15px;
+    }
+}
+
+
+/* ==========================================
+   FOOTER DESKTOP - VARIANTA COMPACTA
+   ========================================== */
+
+@media (min-width: 769px) {
+
+    .footer {
+        min-height: 0;
+        padding: 5px 7%;
+
+        grid-template-rows: repeat(2, minmax(22px, auto));
+
+        row-gap: 2px;
+        column-gap: 20px;
+    }
+
+    .contact-item {
+        font-size: 11px;
+        line-height: 1.2;
+        gap: 7px;
+    }
+
+    .contact-item svg {
+        width: 15px;
+        height: 15px;
+        min-width: 15px;
+    }
+
+    .address {
+        max-width: 420px;
     }
 }
