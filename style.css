@@ -947,3 +947,102 @@ body {
         font-size: 11px;
     }
 }
+
+/* ==========================================
+   BUTOANE DESCOPERA MAI MULT
+   ========================================== */
+
+.service-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+
+    margin-top: auto;
+    padding: 11px 23px;
+
+    min-width: 185px;
+
+    background: linear-gradient(
+        135deg,
+        #d8bd7a,
+        #b29450
+    );
+
+    border: 1px solid #e2ca91;
+    border-radius: 3px;
+
+    color: #171d20;
+
+    font-family: Georgia, serif;
+    font-size: 14px;
+    font-weight: bold;
+
+    text-decoration: none;
+    letter-spacing: 0.3px;
+
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.22);
+
+    transition:
+        background 0.3s ease,
+        color 0.3s ease,
+        border-color 0.3s ease,
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.service-button span {
+    font-size: 19px;
+    line-height: 1;
+
+    transition: transform 0.3s ease;
+}
+
+.service-button:hover {
+    background: linear-gradient(
+        135deg,
+        #ead49c,
+        #c5a45e
+    );
+
+    color: #111619;
+
+    border-color: #f0dca9;
+
+    transform: translateY(-3px);
+
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+}
+
+.service-button:hover span {
+    transform: translateX(4px);
+}
+
+.service-button:focus-visible {
+    outline: 2px solid #ead49c;
+    outline-offset: 4px;
+}
+
+.service-button:active {
+    transform: translateY(-1px);
+}
+
+/* SPATIERE CARDURI */
+
+.service-box {
+    padding-bottom: 20px;
+}
+
+.service-box p {
+    margin-bottom: 16px;
+}
+
+/* TELEFOANE */
+
+@media (max-width: 520px) {
+    .service-button {
+        min-width: 195px;
+        padding: 12px 22px;
+        font-size: 14px;
+    }
+}
