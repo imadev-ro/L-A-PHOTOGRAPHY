@@ -33,6 +33,10 @@ body {
     overflow-y: auto;
 }
 
+body.events-open {
+    overflow: hidden;
+}
+
 /* ==========================================
    CONTAINER PRINCIPAL
    ========================================== */
@@ -41,7 +45,6 @@ body {
     width: 100%;
     min-height: 100vh;
     min-height: 100svh;
-    height: auto;
 
     display: grid;
 
@@ -56,7 +59,6 @@ body {
         4px;
 
     background: #171d20;
-
     overflow: visible;
 }
 
@@ -80,7 +82,6 @@ body {
     justify-content: space-between;
 
     background: #111619;
-
     border-bottom: 1px solid #a88b4e;
 }
 
@@ -104,7 +105,6 @@ body {
 .navigation {
     display: flex;
     align-items: center;
-
     gap: clamp(14px, 1.7vw, 28px);
 }
 
@@ -112,7 +112,6 @@ body {
     position: relative;
 
     color: #e5dfd2;
-
     text-decoration: none;
 
     font-size: clamp(12px, 0.95vw, 15px);
@@ -143,7 +142,6 @@ body {
 .main-image {
     width: 100%;
     height: 78%;
-
     min-height: 0;
 
     display: flex;
@@ -158,7 +156,6 @@ body {
 
     width: auto;
     height: 100%;
-
     max-width: 95%;
 
     object-fit: contain;
@@ -193,7 +190,7 @@ body {
 }
 
 /* ==========================================
-   SECTIUNEA CATEGORII
+   SERVICII
    ========================================== */
 
 .services {
@@ -215,22 +212,22 @@ body {
     margin: 0 auto;
 
     display: grid;
-
     grid-template-columns: repeat(3, minmax(0, 1fr));
 
     gap: clamp(18px, 2.2vw, 35px);
 }
 
 /* ==========================================
-   CARDURI
+   CARDURI SERVICII
    ========================================== */
 
 .service-box {
     width: 100%;
     min-width: 0;
     min-height: 0;
+    height: 100%;
 
-    padding: 14px;
+    padding: 14px 14px 20px;
 
     display: flex;
     flex-direction: column;
@@ -254,10 +251,6 @@ body {
     background: #20292c;
 }
 
-/* ==========================================
-   TITLURI CATEGORII
-   ========================================== */
-
 .service-box h2 {
     order: 1;
 
@@ -273,17 +266,11 @@ body {
     color: #d6c39b;
 
     font-family: Georgia, serif;
-
     font-size: clamp(20px, 1.7vw, 27px);
 
     font-weight: normal;
-
     line-height: 1.25;
 }
-
-/* ==========================================
-   FOTOGRAFII CATEGORII
-   ========================================== */
 
 .service-box img {
     order: 2;
@@ -291,7 +278,6 @@ body {
     display: block;
 
     width: 100%;
-
     height: clamp(145px, 21vh, 230px);
 
     min-height: 0;
@@ -303,13 +289,8 @@ body {
     object-position: center;
 
     background: #111619;
-
     border: 1px solid #a58d55;
 }
-
-/* ==========================================
-   LINII AURII
-   ========================================== */
 
 .gold-line {
     order: 3;
@@ -324,26 +305,107 @@ body {
     background: #b79b5c;
 }
 
-/* ==========================================
-   DESCRIERI
-   ========================================== */
-
 .service-box p {
     order: 4;
 
     width: 100%;
 
     padding: 0 7px 8px;
+    margin-bottom: 12px;
 
     color: #e5dfd2;
 
     font-family: Georgia, serif;
-
     font-size: clamp(13px, 1vw, 16px);
 
     line-height: 1.55;
-
     font-weight: normal;
+}
+
+/* ==========================================
+   BUTOANE SERVICII
+   ========================================== */
+
+.service-button {
+    order: 5;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 12px;
+
+    margin-top: auto;
+    margin-bottom: 5px;
+
+    padding: 11px 23px;
+
+    min-width: 185px;
+    flex-shrink: 0;
+
+    background: linear-gradient(
+        135deg,
+        #d8bd7a,
+        #b29450
+    );
+
+    border: 1px solid #e2ca91;
+    border-radius: 3px;
+
+    color: #171d20;
+
+    font-family: Georgia, serif;
+    font-size: 14px;
+    font-weight: bold;
+
+    text-decoration: none;
+    letter-spacing: 0.3px;
+
+    cursor: pointer;
+
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.22);
+
+    transition:
+        background 0.3s ease,
+        color 0.3s ease,
+        border-color 0.3s ease,
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.service-button span {
+    font-size: 19px;
+    line-height: 1;
+
+    transition: transform 0.3s ease;
+}
+
+.service-button:hover {
+    background: linear-gradient(
+        135deg,
+        #ead49c,
+        #c5a45e
+    );
+
+    color: #111619;
+    border-color: #f0dca9;
+
+    transform: translateY(-3px);
+
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+}
+
+.service-button:hover span {
+    transform: translateX(4px);
+}
+
+.service-button:focus-visible {
+    outline: 2px solid #ead49c;
+    outline-offset: 4px;
+}
+
+.service-button:active {
+    transform: translateY(-1px);
 }
 
 /* ==========================================
@@ -364,14 +426,14 @@ body {
 }
 
 /* ==========================================
-   FOOTER DESKTOP
+   FOOTER
    ========================================== */
 
 .footer {
     width: 100%;
-    min-height: 105px;
+    min-height: 0;
 
-    padding: 14px 7%;
+    padding: 5px 7px;
 
     background: #1c2427;
 
@@ -382,18 +444,14 @@ body {
         minmax(0, 1.5fr)
         minmax(0, 1fr);
 
-    grid-template-rows: repeat(2, minmax(30px, auto));
+    grid-template-rows: repeat(2, minmax(22px, auto));
 
     align-items: center;
     justify-items: center;
 
-    column-gap: 30px;
-    row-gap: 8px;
+    column-gap: 20px;
+    row-gap: 2px;
 }
-
-/* ==========================================
-   ELEMENTE CONTACT
-   ========================================== */
 
 .contact-item {
     width: 100%;
@@ -403,24 +461,21 @@ body {
     align-items: center;
     justify-content: center;
 
-    gap: 10px;
+    gap: 7px;
 
     color: #d0c6ae;
-
     text-decoration: none;
 
-    font-size: clamp(11px, 0.85vw, 13px);
-
-    line-height: 1.5;
+    font-size: 11px;
+    line-height: 1.2;
 
     transition: color 0.3s ease;
 }
 
 .contact-item svg {
-    width: 18px;
-    height: 18px;
-
-    min-width: 18px;
+    width: 15px;
+    height: 15px;
+    min-width: 15px;
 
     fill: none;
 
@@ -442,11 +497,7 @@ body {
     color: #d9bd7c;
 }
 
-/* ==========================================
-   POZITIONARE FOOTER
-   ========================================== */
-
-/* STANGA */
+/* POZITIONARE FOOTER */
 
 .email {
     grid-column: 1;
@@ -458,18 +509,13 @@ body {
     grid-row: 2;
 }
 
-/* MIJLOC */
-
 .address {
     grid-column: 2;
     grid-row: 1 / 3;
 
-    max-width: 480px;
-
+    max-width: 420px;
     text-align: center;
 }
-
-/* DREAPTA */
 
 .instagram {
     grid-column: 3;
@@ -482,7 +528,7 @@ body {
 }
 
 /* ==========================================
-   LAPTOPURI
+   LAPTOPURI CU INALTIME REDUSA
    ========================================== */
 
 @media (min-width: 769px) and (max-height: 750px) {
@@ -541,70 +587,341 @@ body {
 }
 
 /* ==========================================
+   POPUP EVENIMENTE
+   ========================================== */
+
+.events-overlay {
+    position: fixed;
+    inset: 0;
+
+    z-index: 9999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 25px;
+
+    background: rgba(5, 9, 11, 0.88);
+
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(7px);
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transition:
+        opacity 0.3s ease,
+        visibility 0.3s ease;
+}
+
+.events-overlay.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+/* FEREASTRA POPUP */
+
+.events-modal {
+    position: relative;
+
+    width: 100%;
+    max-width: 1250px;
+
+    max-height: 90vh;
+    max-height: 90svh;
+
+    padding: 38px 42px;
+
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    background: #171d20;
+
+    border: 1px solid #a88b4e;
+
+    box-shadow: 0 20px 70px rgba(0, 0, 0, 0.55);
+
+    transform: translateY(20px) scale(0.98);
+
+    transition: transform 0.35s ease;
+}
+
+.events-overlay.active .events-modal {
+    transform: translateY(0) scale(1);
+}
+
+/* BUTON INCHIDERE */
+
+.events-close {
+    position: absolute;
+
+    top: 14px;
+    right: 20px;
+
+    z-index: 5;
+
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: transparent;
+
+    border: 1px solid rgba(193, 163, 101, 0.4);
+    border-radius: 50%;
+
+    color: #d1b36d;
+
+    font-size: 29px;
+    line-height: 1;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+.events-close:hover {
+    background: #b79b5c;
+    color: #171d20;
+
+    transform: rotate(90deg);
+}
+
+/* TITLU POPUP */
+
+.events-heading {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.events-eyebrow {
+    display: block;
+
+    margin-bottom: 10px;
+
+    color: #b79b5c;
+
+    font-size: 11px;
+    letter-spacing: 4px;
+}
+
+.events-heading h2 {
+    color: #e5dfd2;
+
+    font-size: clamp(25px, 3vw, 36px);
+    font-weight: normal;
+}
+
+.events-heading-line {
+    width: 65px;
+    height: 1px;
+
+    margin: 15px auto;
+
+    background: #b79b5c;
+}
+
+.events-heading p {
+    color: #bdb5a5;
+
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* GRID CARDURI DESKTOP */
+
+.events-cards {
+    display: grid;
+
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+
+    gap: 19px;
+
+    width: 100%;
+}
+
+/* CARD EVENIMENT */
+
+.event-card {
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    background: #20292c;
+
+    border: 1px solid rgba(183, 155, 92, 0.4);
+
+    overflow: hidden;
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.event-card:hover {
+    transform: translateY(-6px);
+
+    border-color: #d1b36d;
+
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* IMAGINE CARD */
+
+.event-image {
+    position: relative;
+
+    width: 100%;
+    aspect-ratio: 4 / 3;
+
+    overflow: hidden;
+
+    background: #111619;
+}
+
+.event-image img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition: transform 0.5s ease;
+}
+
+.event-card:hover .event-image img {
+    transform: scale(1.06);
+}
+
+.event-number {
+    position: absolute;
+
+    top: 12px;
+    left: 12px;
+
+    padding: 6px 10px;
+
+    color: #e5dfd2;
+
+    background: rgba(17, 22, 25, 0.8);
+
+    border: 1px solid rgba(183, 155, 92, 0.6);
+
+    font-size: 11px;
+    letter-spacing: 1px;
+}
+
+/* CONTINUT CARD */
+
+.event-info {
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    padding: 20px 17px 19px;
+}
+
+.event-category {
+    color: #b79b5c;
+
+    font-size: 9px;
+    letter-spacing: 1.7px;
+
+    margin-bottom: 9px;
+}
+
+.event-info h3 {
+    color: #e5dfd2;
+
+    font-size: 23px;
+    font-weight: normal;
+
+    margin-bottom: 10px;
+}
+
+.event-info p {
+    color: #c9c1b2;
+
+    font-size: 13px;
+    line-height: 1.6;
+
+    margin-bottom: 20px;
+}
+
+/* LINK CARD */
+
+.event-link {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 10px;
+
+    margin-top: auto;
+
+    color: #d1b36d;
+
+    font-size: 12px;
+    text-decoration: none;
+
+    border-bottom: 1px solid rgba(183, 155, 92, 0.4);
+
+    padding-bottom: 5px;
+
+    transition: 0.3s ease;
+}
+
+.event-link span {
+    font-size: 18px;
+
+    transition: transform 0.3s ease;
+}
+
+.event-link:hover {
+    color: #f0dca9;
+}
+
+.event-link:hover span {
+    transform: translateX(5px);
+}
+
+/* INDICATORI CAROUSEL */
+
+.events-dots {
+    display: none;
+}
+
+/* ==========================================
    TABLETE
    ========================================== */
 
-@media (max-width: 768px) {
+@media (min-width: 521px) and (max-width: 950px) {
 
     .site-shell {
         display: flex;
         flex-direction: column;
-
-        width: 100%;
-        height: auto;
         min-height: 100vh;
-
-        overflow: visible;
     }
-
-    /* HEADER */
 
     .header {
-        width: 100%;
-        height: auto;
         min-height: 90px;
-
-        padding: 8px 4%;
-
-        flex-direction: column;
-        justify-content: center;
-
-        gap: 5px;
     }
-
-    .logo-wreath {
-        height: 48px;
-    }
-
-    .navigation {
-        width: 100%;
-
-        justify-content: center;
-        flex-wrap: wrap;
-
-        gap: 10px 17px;
-
-        padding: 5px 0;
-    }
-
-    .navigation a {
-        font-size: 12px;
-    }
-
-    /* BANNER */
 
     .main-banner {
-        width: 100%;
         height: auto;
-        flex-shrink: 0;
     }
 
     .main-image {
-        width: 100%;
-
         height: auto;
-        min-height: 0;
-
         aspect-ratio: 16 / 9;
     }
 
@@ -612,45 +929,26 @@ body {
         width: 100%;
         height: 100%;
         max-width: 100%;
-
         object-fit: contain;
     }
 
     .main-title {
-        width: 100%;
         height: auto;
         min-height: 60px;
-
         padding: 8px 5px;
-
-        font-size: clamp(24px, 5vw, 38px);
     }
 
-    /* SERVICII */
-
     .services {
-        width: 100%;
-        height: auto;
-
         padding: 28px 5%;
     }
 
     .service-container {
-        width: 100%;
-        height: auto;
-
         grid-template-columns: repeat(2, minmax(0, 1fr));
-
         gap: 22px;
     }
 
-    /* CARDURI */
-
     .service-box {
-        width: 100%;
         height: auto;
-        min-height: 0;
-
         padding: 12px;
     }
 
@@ -662,48 +960,34 @@ body {
     .service-box img {
         width: 100%;
         height: auto;
-
         aspect-ratio: 4 / 3;
-
-        flex: none;
-
         object-fit: cover;
     }
 
-    .gold-line {
-        margin: 13px auto 10px;
-    }
-
-    .service-box p {
+    .service-button {
+        min-width: 195px;
+        padding: 12px 22px;
         font-size: 14px;
-        line-height: 1.5;
     }
 
-    /* FOOTER */
+    /* POPUP TABLETA */
 
-    .footer-line,
-    .footer-bottom-line {
-        width: 100%;
-        height: 4px;
-        min-height: 4px;
-
-        flex-shrink: 0;
+    .events-modal {
+        padding: 35px 25px;
     }
+
+    .events-cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+    }
+
+    /* FOOTER TABLETA */
 
     .footer {
-        width: 100%;
-        height: auto;
-        min-height: 0;
-
         padding: 24px 6%;
-
-        display: grid;
 
         grid-template-columns: repeat(2, minmax(0, 1fr));
         grid-template-rows: auto auto auto;
-
-        justify-items: center;
-        align-items: center;
 
         column-gap: 15px;
         row-gap: 18px;
@@ -755,11 +1039,32 @@ body {
 
 @media (max-width: 520px) {
 
+    /* STRUCTURA */
+
+    .site-shell {
+        display: flex;
+        flex-direction: column;
+
+        width: 100%;
+        height: auto;
+        min-height: 100vh;
+
+        overflow: visible;
+    }
+
     /* HEADER */
 
     .header {
+        width: 100%;
+        height: auto;
         min-height: 85px;
+
         padding: 8px 10px;
+
+        flex-direction: column;
+        justify-content: center;
+
+        gap: 5px;
     }
 
     .logo-wreath {
@@ -767,7 +1072,14 @@ body {
     }
 
     .navigation {
+        width: 100%;
+
+        justify-content: center;
+        flex-wrap: wrap;
+
         gap: 9px 12px;
+
+        padding: 5px 0;
     }
 
     .navigation a {
@@ -776,12 +1088,35 @@ body {
 
     /* BANNER */
 
+    .main-banner {
+        width: 100%;
+        height: auto;
+        flex-shrink: 0;
+    }
+
     .main-image {
+        width: 100%;
+
+        height: auto;
+        min-height: 0;
+
         aspect-ratio: 4 / 3;
     }
 
+    .main-image img {
+        width: 100%;
+        height: 100%;
+        max-width: 100%;
+
+        object-fit: contain;
+    }
+
     .main-title {
+        width: 100%;
+        height: auto;
         min-height: 55px;
+
+        padding: 8px 5px;
 
         gap: 7px;
 
@@ -791,6 +1126,9 @@ body {
     /* SERVICII */
 
     .services {
+        width: 100%;
+        height: auto;
+
         padding: 24px 5%;
     }
 
@@ -804,8 +1142,6 @@ body {
 
         gap: 22px;
     }
-
-    /* CARDURI */
 
     .service-box {
         width: 100%;
@@ -842,6 +1178,18 @@ body {
 
         font-size: 15px;
         line-height: 1.55;
+    }
+
+    .service-button {
+        min-width: 195px;
+
+        padding: 12px 22px;
+
+        font-size: 14px;
+    }
+
+    .service-box .service-button {
+        margin-top: 15px;
     }
 
     /* FOOTER */
@@ -902,6 +1250,147 @@ body {
 
         border-top: 1px solid rgba(193, 163, 101, 0.3);
     }
+
+    /* ======================================
+       POPUP TELEFON - CAROUSEL
+       ====================================== */
+
+    .events-overlay {
+        padding: 12px;
+    }
+
+    .events-modal {
+        width: 100%;
+        max-width: 440px;
+
+        max-height: 88vh;
+        max-height: 88svh;
+
+        padding: 30px 0 20px;
+
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+
+    .events-close {
+        top: 10px;
+        right: 12px;
+
+        width: 34px;
+        height: 34px;
+    }
+
+    .events-heading {
+        padding: 0 18px;
+        margin-bottom: 22px;
+    }
+
+    .events-eyebrow {
+        font-size: 10px;
+        letter-spacing: 3px;
+    }
+
+    .events-heading h2 {
+        font-size: 26px;
+    }
+
+    .events-heading p {
+        font-size: 12px;
+    }
+
+    /* O SINGURA OFERTA VIZIBILA */
+
+    .events-cards {
+        display: flex;
+
+        width: 100%;
+
+        gap: 13px;
+
+        padding: 0 7% 12px;
+
+        overflow-x: auto;
+        overflow-y: hidden;
+
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+
+        -webkit-overflow-scrolling: touch;
+
+        scrollbar-width: none;
+    }
+
+    .events-cards::-webkit-scrollbar {
+        display: none;
+    }
+
+    .event-card {
+        flex: 0 0 86%;
+
+        width: 86%;
+        min-width: 86%;
+
+        scroll-snap-align: center;
+        scroll-snap-stop: always;
+    }
+
+    .event-card:hover {
+        transform: none;
+    }
+
+    .event-image {
+        aspect-ratio: 4 / 3;
+    }
+
+    .event-info {
+        padding: 18px 17px 20px;
+    }
+
+    .event-info h3 {
+        font-size: 24px;
+    }
+
+    .event-info p {
+        font-size: 13px;
+    }
+
+    /* PUNCTE CAROUSEL */
+
+    .events-dots {
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+
+        gap: 9px;
+
+        padding-top: 12px;
+    }
+
+    .events-dots button {
+        width: 7px;
+        height: 7px;
+
+        padding: 0;
+
+        border: none;
+        border-radius: 50%;
+
+        background: #657074;
+
+        cursor: pointer;
+
+        transition: 0.3s ease;
+    }
+
+    .events-dots button.active {
+        width: 23px;
+
+        border-radius: 10px;
+
+        background: #c5a45e;
+    }
+
 }
 
 /* ==========================================
@@ -946,187 +1435,38 @@ body {
     .contact-item {
         font-size: 11px;
     }
+
+    .events-heading h2 {
+        font-size: 23px;
+    }
+
+    .event-card {
+        flex-basis: 88%;
+        min-width: 88%;
+    }
+
 }
 
 /* ==========================================
-   BUTOANE DESCOPERA MAI MULT
+   ACCESIBILITATE
    ========================================== */
 
-.service-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-
-    margin-top: auto;
-    padding: 11px 23px;
-
-    min-width: 185px;
-
-    background: linear-gradient(
-        135deg,
-        #d8bd7a,
-        #b29450
-    );
-
-    border: 1px solid #e2ca91;
-    border-radius: 3px;
-
-    color: #171d20;
-
-    font-family: Georgia, serif;
-    font-size: 14px;
-    font-weight: bold;
-
-    text-decoration: none;
-    letter-spacing: 0.3px;
-
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.22);
-
-    transition:
-        background 0.3s ease,
-        color 0.3s ease,
-        border-color 0.3s ease,
-        transform 0.3s ease,
-        box-shadow 0.3s ease;
-}
-
-.service-button span {
-    font-size: 19px;
-    line-height: 1;
-
-    transition: transform 0.3s ease;
-}
-
-.service-button:hover {
-    background: linear-gradient(
-        135deg,
-        #ead49c,
-        #c5a45e
-    );
-
-    color: #111619;
-
-    border-color: #f0dca9;
-
-    transform: translateY(-3px);
-
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
-}
-
-.service-button:hover span {
-    transform: translateX(4px);
-}
-
-.service-button:focus-visible {
-    outline: 2px solid #ead49c;
+.events-close:focus-visible,
+.event-link:focus-visible,
+.events-dots button:focus-visible {
+    outline: 2px solid #e2ca91;
     outline-offset: 4px;
 }
 
-.service-button:active {
-    transform: translateY(-1px);
-}
+@media (prefers-reduced-motion: reduce) {
 
-/* SPATIERE CARDURI */
-
-.service-box {
-    padding-bottom: 20px;
-}
-
-.service-box p {
-    margin-bottom: 16px;
-}
-
-/* TELEFOANE */
-
-@media (max-width: 520px) {
+    .events-overlay,
+    .events-modal,
+    .event-card,
+    .event-image img,
+    .service-box,
     .service-button {
-        min-width: 195px;
-        padding: 12px 22px;
-        font-size: 14px;
-    }
-}
-
-/* ==========================================
-   POZITIONARE CORECTA CARDURI SI BUTOANE
-   ========================================== */
-
-.service-box {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 100%;
-}
-
-.service-box h2 {
-    order: 1;
-}
-
-.service-box img {
-    order: 2;
-}
-
-.service-box .gold-line {
-    order: 3;
-}
-
-.service-box p {
-    order: 4;
-    margin-bottom: 12px;
-}
-
-.service-box .service-button {
-    order: 5;
-
-    margin-top: auto;
-    margin-bottom: 5px;
-
-    flex-shrink: 0;
-}
-
-/* Pe telefon, cardurile isi pastreaza inaltimea naturala */
-
-@media (max-width: 520px) {
-    .service-box {
-        height: auto;
-        min-height: 0;
+        transition: none;
     }
 
-    .service-box .service-button {
-        margin-top: 15px;
-    }
-}
-
-
-/* ==========================================
-   FOOTER DESKTOP - VARIANTA COMPACTA
-   ========================================== */
-
-@media (min-width: 769px) {
-
-    .footer {
-        min-height: 0;
-        padding: 5px 7%;
-
-        grid-template-rows: repeat(2, minmax(22px, auto));
-
-        row-gap: 2px;
-        column-gap: 20px;
-    }
-
-    .contact-item {
-        font-size: 11px;
-        line-height: 1.2;
-        gap: 7px;
-    }
-
-    .contact-item svg {
-        width: 15px;
-        height: 15px;
-        min-width: 15px;
-    }
-
-    .address {
-        max-width: 420px;
-    }
 }
