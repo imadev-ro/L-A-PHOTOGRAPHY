@@ -203,22 +203,38 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
-    // ======================================
-    // LINKURI CATRE CONTACT
-    // ======================================
+  
+// ======================================
+// WHATSAPP - OFERTE EVENIMENTE
+// ======================================
 
-    const eventLinks =
-        popup.querySelectorAll(".event-link");
+const eventLinks = popup.querySelectorAll(".event-link");
 
-    eventLinks.forEach((link) => {
+const photographerPhone = "40730548517";
 
-        link.addEventListener("click", () => {
+eventLinks.forEach((link) => {
 
-            closePopup();
+    const eventName = link.dataset.event;
 
-        });
+    const message =
+        `Bună ziua! Am văzut site-ul L&A Photography și sunt interesat(ă) de o ofertă pentru evenimentul: ${eventName}.
 
+Aș dori să primesc mai multe detalii despre pachetele disponibile și prețuri.
+
+Mulțumesc!`;
+
+    link.href =
+        `https://wa.me/${photographerPhone}?text=${encodeURIComponent(message)}`;
+
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+
+    link.addEventListener("click", () => {
+        closePopup();
     });
+
+});
+
 
 
     // ======================================
