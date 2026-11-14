@@ -57,7 +57,7 @@
         </a>
 
         <nav class="navigation">
-            <a href="index.html">Acasa</a>
+            <a href="index.html">Acasă</a>
             <a href="#about">Despre mine</a>
             <a href="#pictures">Momente</a>
         </nav>
@@ -104,10 +104,14 @@
                     botezuri, cununii și majorate
                 </p>
 
-                <a href="#contact" class="service-button">
-                 Descoperă mai mult
-                <span>→</span>
-                 </a>
+                <button type="button"
+                        class="service-button"
+                        id="openEvents">
+
+                    Descoperă mai mult
+                    <span>→</span>
+
+                </button>
 
             </article>
 
@@ -128,8 +132,10 @@
                 </p>
 
                 <a href="#contact" class="service-button">
-                Descoperă mai mult
-                <span>→</span>
+
+                    Descoperă mai mult
+                    <span>→</span>
+
                 </a>
 
             </article>
@@ -152,15 +158,233 @@
                 </p>
 
                 <a href="#contact" class="service-button">
-                Descoperă mai mult
-               <span>→</span>
-               </a>
+
+                    Descoperă mai mult
+                    <span>→</span>
+
+                </a>
 
             </article>
 
         </div>
 
     </section>
+
+
+    <!-- POPUP EVENIMENTE -->
+
+    <div class="events-overlay"
+         id="eventsPopup"
+         aria-hidden="true">
+
+        <div class="events-modal"
+             role="dialog"
+             aria-modal="true"
+             aria-labelledby="eventsTitle">
+
+            <!-- INCHIDERE -->
+
+            <button class="events-close"
+                    id="closeEvents"
+                    type="button"
+                    aria-label="Închide">
+
+                &times;
+
+            </button>
+
+
+            <!-- TITLU -->
+
+            <div class="events-heading">
+
+                <span class="events-eyebrow">
+                    L&A PHOTOGRAPHY
+                </span>
+
+                <h2 id="eventsTitle">
+                    Evenimente speciale
+                </h2>
+
+                <div class="events-heading-line"></div>
+
+                <p>
+                    Alege evenimentul pentru care îți dorești
+                    amintiri de neuitat.
+                </p>
+
+            </div>
+
+
+            <!-- CARDURI EVENIMENTE -->
+
+            <div class="events-cards" id="eventsCards">
+
+
+                <!-- CUNUNIE -->
+
+                <article class="event-card">
+
+                    <div class="event-image">
+
+                        <img src="Poze/Index/Evenimente.jpg"
+                             alt="Fotografie cununie">
+
+                        <span class="event-number">01</span>
+
+                    </div>
+
+                    <div class="event-info">
+
+                        <span class="event-category">
+                            MOMENTE ÎN DOI
+                        </span>
+
+                        <h3>Cununie</h3>
+
+                        <p>
+                            Surprindem emoția și frumusețea
+                            unui început împreună.
+                        </p>
+
+                        <a href="#contact" class="event-link">
+                            Solicită o ofertă <span>→</span>
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+                <!-- NUNTA -->
+
+                <article class="event-card">
+
+                    <div class="event-image">
+
+                        <img src="Poze/Index/Evenimente.jpg"
+                             alt="Fotografie nuntă">
+
+                        <span class="event-number">02</span>
+
+                    </div>
+
+                    <div class="event-info">
+
+                        <span class="event-category">
+                            O ZI DE NEUITAT
+                        </span>
+
+                        <h3>Nuntă</h3>
+
+                        <p>
+                            Păstrăm în imagini fiecare emoție
+                            și fiecare moment special.
+                        </p>
+
+                        <a href="#contact" class="event-link">
+                            Solicită o ofertă <span>→</span>
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+                <!-- BOTEZ -->
+
+                <article class="event-card">
+
+                    <div class="event-image">
+
+                        <img src="Poze/Index/Evenimente.jpg"
+                             alt="Fotografie botez">
+
+                        <span class="event-number">03</span>
+
+                    </div>
+
+                    <div class="event-info">
+
+                        <span class="event-category">
+                            PRIMUL CAPITOL
+                        </span>
+
+                        <h3>Botez</h3>
+
+                        <p>
+                            Amintiri prețioase dintr-o zi
+                            plină de iubire și bucurie.
+                        </p>
+
+                        <a href="#contact" class="event-link">
+                            Solicită o ofertă <span>→</span>
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+                <!-- MAJORAT -->
+
+                <article class="event-card">
+
+                    <div class="event-image">
+
+                        <img src="Poze/Index/Evenimente.jpg"
+                             alt="Fotografie majorat">
+
+                        <span class="event-number">04</span>
+
+                    </div>
+
+                    <div class="event-info">
+
+                        <span class="event-category">
+                            OCAZII SPECIALE
+                        </span>
+
+                        <h3>Majorat</h3>
+
+                        <p>
+                            Surprindem distracția, energia
+                            și momentele de neuitat.
+                        </p>
+
+                        <a href="#contact" class="event-link">
+                            Solicită o ofertă <span>→</span>
+                        </a>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+
+            <!-- INDICATORI TELEFON -->
+
+            <div class="events-dots" id="eventsDots">
+
+                <button class="active"
+                        type="button"
+                        aria-label="Cununie"></button>
+
+                <button type="button"
+                        aria-label="Nuntă"></button>
+
+                <button type="button"
+                        aria-label="Botez"></button>
+
+                <button type="button"
+                        aria-label="Majorat"></button>
+
+            </div>
+
+        </div>
+
+    </div>
 
 
     <!-- LINIE FOOTER -->
@@ -171,6 +395,7 @@
     <!-- FOOTER -->
 
     <footer class="footer" id="contact">
+
 
         <a href="mailto:luciandragomir1993@gmail.com"
            class="contact-item email">
@@ -223,6 +448,7 @@
 
         <a href="https://www.instagram.com/luc14nn"
            target="_blank"
+           rel="noopener noreferrer"
            class="contact-item instagram">
 
             <svg viewBox="0 0 24 24">
@@ -238,6 +464,7 @@
 
         <a href="https://www.facebook.com/share/1dqGhz2PMT/?mibextid=wwXIfr"
            target="_blank"
+           rel="noopener noreferrer"
            class="contact-item facebook">
 
             <svg viewBox="0 0 24 24">
@@ -256,6 +483,7 @@
     <div class="footer-bottom-line"></div>
 
 </div>
+
 
 <script src="script.js"></script>
 
