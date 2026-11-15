@@ -1654,3 +1654,105 @@ a:focus-visible {
         transition-duration: .01ms !important;
     }
 }
+/* ==========================================
+   CORECTII FINALE LAPTOP SI TELEFON
+   ========================================== */
+
+/* LAPTOP SI DESKTOP */
+@media (min-width: 701px) {
+
+    /* Nu afișăm indicații de glisare pe laptop */
+    .carousel-navigation {
+        display: none !important;
+    }
+
+    /* Evenimente afișate normal în grilă */
+    .events-cards {
+        display: grid !important;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        overflow: visible !important;
+    }
+
+    /* Pachete afișate normal în trei coloane */
+    .packages-grid {
+        display: grid !important;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        overflow: visible !important;
+    }
+
+    .event-card,
+    .package-card {
+        width: 100%;
+        min-width: 0;
+        max-width: none;
+    }
+}
+
+/* TELEFON */
+@media (max-width: 700px) {
+
+    /* Cardurile evenimentelor */
+    .events-cards {
+        display: flex !important;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        width: 100%;
+        gap: 12px;
+        padding: 5px 15px 12px;
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        scroll-snap-type: x mandatory;
+        scroll-snap-stop: always;
+        scroll-padding-left: 15px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+
+    .events-cards::-webkit-scrollbar {
+        display: none;
+    }
+
+    .event-card {
+        flex: 0 0 100% !important;
+        width: 100% !important;
+        min-width: 100% !important;
+        max-width: 100% !important;
+        scroll-snap-align: start;
+        scroll-snap-stop: always;
+    }
+
+    /* Cardurile pachetelor */
+    .packages-grid {
+        display: flex !important;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        width: 100%;
+        gap: 12px;
+        padding: 5px 15px 12px;
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        scroll-snap-type: x mandatory;
+        scroll-snap-stop: always;
+        scroll-padding-left: 15px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+
+    .packages-grid::-webkit-scrollbar {
+        display: none;
+    }
+
+    .package-card {
+        flex: 0 0 100% !important;
+        width: 100% !important;
+        min-width: 100% !important;
+        max-width: 100% !important;
+        scroll-snap-align: start;
+        scroll-snap-stop: always;
+    }
+
+    /* Indicațiile rămân vizibile doar pe telefon */
+    .carousel-navigation {
+        display: flex !important;
+    }
+}
