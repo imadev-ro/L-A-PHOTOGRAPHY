@@ -1,106 +1,113 @@
-
 document.addEventListener("DOMContentLoaded", () => {
 
-    // ======================================
-    // ELEMENTE
-    // ======================================
-
     const popup = document.getElementById("eventsPopup");
-
     const openButton = document.getElementById("openEvents");
     const closeButton = document.getElementById("closeEvents");
-
     const eventsView = document.getElementById("eventsView");
     const packagesView = document.getElementById("packagesView");
-
     const backButton = document.getElementById("backToEvents");
-
     const selectedEvent = document.getElementById("selectedEvent");
-
     const modal = popup?.querySelector(".events-modal");
 
-    if (
-        !popup ||
-        !openButton ||
-        !closeButton ||
-        !eventsView ||
-        !packagesView ||
-        !backButton ||
-        !selectedEvent ||
-        !modal
-    ) {
+    if (!popup || !openButton || !closeButton || !eventsView ||
+        !packagesView || !backButton || !selectedEvent || !modal) {
         return;
     }
 
-
-    // ======================================
-    // CONFIGURARE WHATSAPP
-    // ======================================
-
     const photographerPhone = "40730548517";
 
-
-    // ======================================
-    // VARIABILE
-    // ======================================
-
     let currentEvent = "";
-
     let previousFocus = null;
 
+    // Creează navigarea cu buline și sincronizeaz-o cu poziția cardului.
+    function setupCarousel(container, cardSelector, dotsId) {
+        if (!container) return null;
 
-    // ======================================
-    // DESCHIDERE POPUP
-    // ======================================
+        const dotsContainer = document.getElementById(dotsId);
+        const cards = Array.from(container.querySelectorAll(cardSelector));
 
-    function openPopup() {
+        if (!dotsContainer || !cards.length) return null;
 
-        previousFocus = document.activeElement;
+        dotsContainer.innerHTML = "";
 
-        currentEvent = "";
+        const dots = cards.map((card, index) => {
+            const dot = document.createElement("button");
+            dot.type = "button";
+            dot.className = "carousel-dot";
+            dot.setAttribute("aria-label", `Afișează cardul ${index + 1}`);
 
-        showEvents();
+            dot.addEventListener("click", () => {
+                const targetLeft =
+                    card.offsetLeft -
+                    (container.clientWidth - card.clientWidth) / 2;
 
-        popup.classList.add("active");
+                container.scrollTo({
+                    left: targetLeft,
+                    behavior: "smooth"
+                });
+            });
 
-        popup.setAttribute("aria-hidden", "false");
+            dotsContainer.appendChild(dot);
+            return dot;
+        });
 
-        document.body.classList.add("events-open");
+        let scrollFrame = null;
 
-        closeButton.focus();
+        function updateDots() {
+            if (scrollFrame) cancelAnimationFrame(scrollFrame);
 
-        modal.scrollTop = 0;
+            scrollFrame = requestAnimationFrame(() => {
+                const containerRect = container.getBoundingClientRect();
+                const center = containerRect.left + containerRect.width / 2;
 
-    }
+                let activeIndex = 0;
+                let closestDistance = Infinity;
 
+                cards.forEach((card, index) => {
+                    const rect = card.getBoundingClientRect();
+                    const cardCenter = rect.left + rect.width / 2;
+                    const distance = Math.abs(center - cardCenter);
 
-    // ======================================
-    // ÎNCHIDERE POPUP
-    // ======================================
+                    if (distance < closestDistance) {
+                        closestDistance = distance;
+                        activeIndex = index;
+                    }
+                });
 
-    function closePopup() {
-
-        popup.classList.remove("active");
-
-        popup.setAttribute("aria-hidden", "true");
-
-        document.body.classList.remove("events-open");
-
-        showEvents();
-
-        if (previousFocus && previousFocus.isConnected) {
-            previousFocus.focus();
+                dots.forEach((dot, index) => {
+                    const active = index === activeIndex;
+                    dot.classList.toggle("active", active);
+                    dot.setAttribute("aria-current", active ? "true" : "false");
+                });
+            });
         }
 
+        container.addEventListener("scroll", updateDots, { passive: true });
+        window.addEventListener("resize", updateDots);
+
+        function reset() {
+            container.scrollTo({ left: 0, behavior: "instant" });
+            updateDots();
+        }
+
+        updateDots();
+
+        return { reset, update: updateDots };
     }
 
+    const eventsCarousel = setupCarousel(
+        document.querySelector(".events-cards"),
+        ".event-card",
+        "eventsDots"
+    );
 
-    // ======================================
-    // AFIȘARE EVENIMENTE
-    // ======================================
+    const packagesCarousel = setupCarousel(
+        document.querySelector(".packages-grid"),
+        ".package-card",
+        "packagesDots"
+    );
 
     function showEvents() {
-
         eventsView.hidden = false;
         packagesView.hidden = true;
 
@@ -109,17 +116,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
         modal.scrollTop = 0;
 
+        requestAnimationFrame(() => eventsCarousel?.reset());
     }
 
-
-    // ======================================
-    // AFIȘARE PACHETE
-    // ======================================
-
     function showPackages(eventName) {
-
         currentEvent = eventName;
-
         selectedEvent.textContent = eventName;
 
         eventsView.hidden = true;
@@ -130,168 +131,89 @@ document.addEventListener("DOMContentLoaded", () => {
 
         modal.scrollTop = 0;
 
-        // Mutăm focusul pe butonul de întoarcere.
+        requestAnimationFrame(() => packagesCarousel?.reset());
 
         backButton.focus();
-
     }
 
-
-    // ======================================
-    // BUTON DESCHIDERE
-    // ======================================
-
-    openButton.addEventListener("click", openPopup);
-
-
-    // ======================================
-    // BUTON ÎNCHIDERE
-    // ======================================
-
-    closeButton.addEventListener("click", closePopup);
-
-
-    // ======================================
-    // CLICK ÎN AFARA POPUP-ULUI
-    // ======================================
-
-    popup.addEventListener("click", (event) => {
-
-        if (event.target === popup) {
-            closePopup();
-        }
-
-    });
-
-
-    // ======================================
-    // ÎNCHIDERE CU ESCAPE
-    // ======================================
-
-    document.addEventListener("keydown", (event) => {
-
-        if (
-            event.key === "Escape" &&
-            popup.classList.contains("active")
-        ) {
-
-            closePopup();
-
-        }
-
-    });
-
-
-    // ======================================
-    // SELECTARE EVENIMENT
-    // ======================================
-
-    const eventButtons = document.querySelectorAll(
-        ".event-link[data-event]"
-    );
-
-    eventButtons.forEach((button) => {
-
-        button.addEventListener("click", () => {
-
-            const eventName = button.dataset.event;
-
-            if (!eventName) {
-                return;
-            }
-
-            showPackages(eventName);
-
-        });
-
-    });
-
-
-    // ======================================
-    // ÎNAPOI LA EVENIMENTE
-    // ======================================
-
-    backButton.addEventListener("click", () => {
+    function openPopup() {
+        previousFocus = document.activeElement;
+        currentEvent = "";
 
         showEvents();
 
-        const firstEventButton = eventsView.querySelector(
-            ".event-link"
-        );
+        popup.classList.add("active");
+        popup.setAttribute("aria-hidden", "false");
+        document.body.classList.add("events-open");
 
-        if (firstEventButton) {
-            firstEventButton.focus();
+        closeButton.focus();
+        modal.scrollTop = 0;
+    }
+
+    function closePopup() {
+        popup.classList.remove("active");
+        popup.setAttribute("aria-hidden", "true");
+        document.body.classList.remove("events-open");
+
+        showEvents();
+
+        if (previousFocus && previousFocus.isConnected) {
+            previousFocus.focus();
         }
+    }
 
+    openButton.addEventListener("click", openPopup);
+    closeButton.addEventListener("click", closePopup);
+
+    popup.addEventListener("click", (event) => {
+        if (event.target === popup) closePopup();
     });
 
+    document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && popup.classList.contains("active")) {
+            closePopup();
+        }
+    });
 
-    // ======================================
-    // SOLICITARE OFERTĂ WHATSAPP
-    // ======================================
-
-    const packageButtons = document.querySelectorAll(
-        ".package-button[data-package]"
-    );
-
-    packageButtons.forEach((button) => {
-
+    eventsView.querySelectorAll(".event-link[data-event]").forEach((button) => {
         button.addEventListener("click", () => {
+            const eventName = button.dataset.event;
+            if (eventName) showPackages(eventName);
+        });
+    });
 
+    backButton.addEventListener("click", () => {
+        showEvents();
+
+        const firstEventButton = eventsView.querySelector(".event-link");
+        firstEventButton?.focus();
+    });
+
+    document.querySelectorAll(".package-button[data-package]").forEach((button) => {
+        button.addEventListener("click", () => {
             const packageName = button.dataset.package;
-
-            if (!currentEvent || !packageName) {
-                return;
-            }
+            if (!currentEvent || !packageName) return;
 
             const message =
                 `Bună ziua! Am vizitat site-ul L&A Photography ` +
                 `și sunt interesat(ă) de o ofertă pentru evenimentul: ` +
                 `${currentEvent}, pachetul ${packageName}.\n\n` +
-
                 `Aș dori să primesc mai multe detalii despre serviciile ` +
                 `incluse și prețul acestui pachet.\n\n` +
-
                 `Mulțumesc!`;
 
             const whatsappURL =
-                `https://wa.me/${photographerPhone}?text=` +
-                encodeURIComponent(message);
+                `https://wa.me/${photographerPhone}?text=${encodeURIComponent(message)}`;
 
-
-            // Deschidem WhatsApp într-o filă nouă.
-
-            const whatsappWindow = window.open(
-                whatsappURL,
-                "_blank",
-                "noopener,noreferrer"
-            );
-
-
-            // Închidem popup-ul după solicitare.
-
-            if (whatsappWindow) {
-                closePopup();
-            }
-
+            window.open(whatsappURL, "_blank", "noopener,noreferrer");
         });
-
     });
 
-
-    // ======================================
-    // PROTECȚIE FOCUS ÎN POPUP
-    // ======================================
-
+    // Menține focusul în fereastra popup cât timp aceasta este deschisă.
     popup.addEventListener("keydown", (event) => {
+        if (event.key !== "Tab") return;
 
-        if (event.key !== "Tab") {
-            return;
-        }
-
-        const activeView = packagesView.hidden
-            ? eventsView
-            : packagesView;
+        const activeView = packagesView.hidden ? eventsView : packagesView;
 
         const focusableElements = [
             closeButton,
@@ -299,42 +221,21 @@ document.addEventListener("DOMContentLoaded", () => {
                 'button:not([disabled]), a[href], [tabindex]:not([tabindex="-1"])'
             )
         ].filter((element) => {
-
-            return !element.hidden &&
-                element.getClientRects().length > 0;
-
+            return !element.hidden && element.getClientRects().length > 0;
         });
 
-        if (focusableElements.length === 0) {
-            return;
-        }
+        if (!focusableElements.length) return;
 
         const firstElement = focusableElements[0];
+        const lastElement = focusableElements[focusableElements.length - 1];
 
-        const lastElement =
-            focusableElements[focusableElements.length - 1];
-
-
-        if (
-            event.shiftKey &&
-            document.activeElement === firstElement
-        ) {
-
+        if (event.shiftKey && document.activeElement === firstElement) {
             event.preventDefault();
-
             lastElement.focus();
-
-        } else if (
-            !event.shiftKey &&
-            document.activeElement === lastElement
-        ) {
-
+        } else if (!event.shiftKey && document.activeElement === lastElement) {
             event.preventDefault();
-
             firstElement.focus();
-
         }
-
     });
 
 });
