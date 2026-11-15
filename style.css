@@ -1,11 +1,13 @@
+
 /* ==========================================
    L&A PHOTOGRAPHY
+   DESIGN RESPONSIVE
    Desktop: grid
-   Telefon: carusele orizontale
-   Popup mobil: cardul complet vizibil
+   Mobile: carusele orizontale
    ========================================== */
 
 /* RESET */
+
 * {
     margin: 0;
     padding: 0;
@@ -31,7 +33,10 @@ body.events-open {
     overflow: hidden;
 }
 
-/* STRUCTURA PAGINII */
+/* ==========================================
+   PAGINA PRINCIPALA
+   ========================================== */
+
 .site-shell {
     width: 100%;
     min-height: 100vh;
@@ -46,6 +51,7 @@ body.events-open {
 }
 
 /* HEADER */
+
 .header {
     width: 100%;
     height: 100%;
@@ -89,6 +95,7 @@ body.events-open {
 }
 
 /* BANNER */
+
 .main-banner {
     width: 100%;
     height: 100%;
@@ -140,6 +147,7 @@ body.events-open {
 }
 
 /* SERVICII */
+
 .services {
     width: 100%;
     min-height: 0;
@@ -264,6 +272,7 @@ body.events-open {
 }
 
 /* LINII FOOTER */
+
 .footer-line,
 .footer-bottom-line {
     width: 100%;
@@ -272,6 +281,7 @@ body.events-open {
 }
 
 /* FOOTER */
+
 .footer {
     width: 100%;
     min-height: 0;
@@ -321,8 +331,15 @@ body.events-open {
     color: #d9bd7c;
 }
 
-.email { grid-column: 1; grid-row: 1; }
-.phone { grid-column: 1; grid-row: 2; }
+.email {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.phone {
+    grid-column: 1;
+    grid-row: 2;
+}
 
 .address {
     grid-column: 2;
@@ -331,14 +348,21 @@ body.events-open {
     text-align: center;
 }
 
-.instagram { grid-column: 3; grid-row: 1; }
-.facebook { grid-column: 3; grid-row: 2; }
+.instagram {
+    grid-column: 3;
+    grid-row: 1;
+}
+
+.facebook {
+    grid-column: 3;
+    grid-row: 2;
+}
 
 /* ==========================================
    POPUP
    ========================================== */
 
-.events-overlay {
+.events-popup {
     position: fixed;
     inset: 0;
     z-index: 9999;
@@ -355,7 +379,7 @@ body.events-open {
     transition: opacity .3s ease, visibility .3s ease;
 }
 
-.events-overlay.active {
+.events-popup.active {
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
@@ -366,7 +390,7 @@ body.events-open {
     width: 100%;
     max-width: 1350px;
     max-height: 92vh;
-    padding: 42px 42px 35px;
+    padding: 42px;
     overflow-x: hidden;
     overflow-y: auto;
     overscroll-behavior: contain;
@@ -379,7 +403,7 @@ body.events-open {
     scrollbar-color: #9e824d #171d20;
 }
 
-.events-overlay.active .events-modal {
+.events-popup.active .events-modal {
     transform: translateY(0) scale(1);
 }
 
@@ -396,10 +420,12 @@ body.events-open {
     border-radius: 10px;
 }
 
-.events-close {
+/* BUTON INCHIDERE */
+
+.close-popup {
     position: absolute;
-    top: 14px;
-    right: 18px;
+    top: 12px;
+    right: 16px;
     z-index: 30;
     width: 38px;
     height: 38px;
@@ -416,13 +442,14 @@ body.events-open {
     transition: .3s ease;
 }
 
-.events-close:hover {
+.close-popup:hover {
     background: #b79b5c;
     color: #171d20;
     transform: rotate(90deg);
 }
 
-/* ECRANE POPUP */
+/* ECRANE */
+
 .popup-view[hidden] {
     display: none !important;
 }
@@ -432,11 +459,19 @@ body.events-open {
 }
 
 @keyframes viewAppear {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-/* TITLURI POPUP */
+/* TITLURI */
+
 .events-heading,
 .packages-heading {
     text-align: center;
@@ -473,10 +508,13 @@ body.events-open {
     line-height: 1.6;
 }
 
-/* EVENIMENTE DESKTOP */
+/* ==========================================
+   EVENIMENTE DESKTOP
+   ========================================== */
+
 .events-cards {
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 19px;
     width: 100%;
 }
@@ -485,85 +523,47 @@ body.events-open {
     min-width: 0;
     display: flex;
     flex-direction: column;
-    background: #20292c;
+    justify-content: center;
+    min-height: 220px;
+    padding: 28px 22px;
+    background: linear-gradient(145deg, #222c2f, #1b2326);
     border: 1px solid rgba(183,155,92,.4);
     overflow: hidden;
-    transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease;
+    transition: transform .3s ease, border-color .3s ease;
 }
 
 .event-card:hover {
-    transform: translateY(-6px);
+    transform: translateY(-5px);
     border-color: #d1b36d;
-    box-shadow: 0 12px 25px rgba(0,0,0,.3);
 }
 
-.event-image {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 4 / 3;
-    overflow: hidden;
-    background: #111619;
-}
-
-.event-image img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform .5s ease;
-}
-
-.event-card:hover .event-image img {
-    transform: scale(1.06);
-}
-
-.event-number {
-    position: absolute;
-    top: 12px;
-    left: 12px;
-    padding: 6px 10px;
-    color: #e5dfd2;
-    background: rgba(17,22,25,.8);
-    border: 1px solid rgba(183,155,92,.6);
-    font-size: 11px;
-    letter-spacing: 1px;
-}
-
-.event-info {
-    flex: 1;
+.event-card-content {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 20px 17px 19px;
+    height: 100%;
 }
 
-.event-category {
-    color: #b79b5c;
-    font-size: 9px;
-    letter-spacing: 1.7px;
-    margin-bottom: 9px;
-}
-
-.event-info h3 {
-    color: #e5dfd2;
-    font-size: 23px;
+.event-card h3 {
+    color: #e2d6ba;
+    font-size: 27px;
     font-weight: normal;
-    margin-bottom: 10px;
+    margin-bottom: 13px;
 }
 
-.event-info p {
+.event-card p {
     color: #c9c1b2;
     font-size: 13px;
     line-height: 1.6;
-    margin-bottom: 20px;
+    margin-bottom: 22px;
 }
 
-.event-link {
+.event-button {
     display: inline-flex;
     align-items: center;
     gap: 10px;
     margin-top: auto;
-    padding: 0 0 5px;
+    padding: 0 0 6px;
     color: #d1b36d;
     font-family: Georgia, serif;
     font-size: 13px;
@@ -574,18 +574,30 @@ body.events-open {
     transition: .3s ease;
 }
 
-.event-link span {
+.event-button span {
     font-size: 18px;
     transition: transform .3s ease;
 }
 
-.event-link:hover { color: #f0dca9; }
-.event-link:hover span { transform: translateX(5px); }
+.event-button:hover {
+    color: #f0dca9;
+}
 
-/* TITLU PACHETE SI BUTON INAPOI */
+.event-button:hover span {
+    transform: translateX(5px);
+}
+
+/* ==========================================
+   PACHETE
+   ========================================== */
+
 .packages-heading {
     position: relative;
     padding-top: 8px;
+}
+
+.packages-heading h2 span {
+    color: #d1b36d;
 }
 
 .back-button {
@@ -619,11 +631,6 @@ body.events-open {
     transform: translateX(-4px);
 }
 
-.packages-heading h2 span {
-    color: #d1b36d;
-}
-
-/* PACHETE DESKTOP */
 .packages-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -641,17 +648,17 @@ body.events-open {
     background: linear-gradient(160deg, #222c2f, #1b2326);
     border: 1px solid rgba(183,155,92,.38);
     overflow: hidden;
-    transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease;
+    transition: border-color .3s ease, box-shadow .3s ease;
 }
 
 .package-card:hover {
-    transform: translateY(-5px);
     border-color: #b79b5c;
     box-shadow: 0 12px 28px rgba(0,0,0,.28);
 }
 
 .package-top {
     text-align: center;
+    flex-shrink: 0;
 }
 
 .package-label {
@@ -669,8 +676,17 @@ body.events-open {
     letter-spacing: 1px;
 }
 
+.package-price {
+    margin-top: 5px;
+    color: #d1b36d;
+    font-size: 18px;
+    font-weight: normal;
+    letter-spacing: .5px;
+    line-height: 1.2;
+}
+
 .package-description {
-    min-height: 40px;
+    min-height: 35px;
     margin-top: 8px;
     color: #aaa99e;
     font-size: 12px;
@@ -680,6 +696,7 @@ body.events-open {
 .package-divider {
     width: 55px;
     height: 1px;
+    flex-shrink: 0;
     margin: 20px auto 22px;
     background: #b79b5c;
 }
@@ -688,7 +705,7 @@ body.events-open {
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 12px;
     flex: 1;
     padding: 0;
     margin: 0 0 25px;
@@ -699,7 +716,7 @@ body.events-open {
     padding-left: 22px;
     color: #ded8cb;
     font-size: 13px;
-    line-height: 1.55;
+    line-height: 1.5;
 }
 
 .package-features li::before {
@@ -711,6 +728,8 @@ body.events-open {
     font-size: 14px;
     font-weight: bold;
 }
+
+/* PREDARE */
 
 .package-delivery {
     display: flex;
@@ -731,6 +750,8 @@ body.events-open {
     color: #d1b36d;
     font-size: 15px;
 }
+
+/* BUTON OFERTA */
 
 .package-button {
     width: 100%;
@@ -767,15 +788,25 @@ body.events-open {
 }
 
 /* SILVER */
+
 .package-card.silver {
     border-color: rgba(183,155,92,.28);
 }
 
-.silver .package-top h3 { color: #d5d8d5; }
-.silver .package-divider { background: #9da8a6; }
-.silver .package-features li::before { color: #b8c2bd; }
+.silver .package-top h3 {
+    color: #d5d8d5;
+}
+
+.silver .package-divider {
+    background: #9da8a6;
+}
+
+.silver .package-features li::before {
+    color: #b8c2bd;
+}
 
 /* GOLD */
+
 .package-card.gold {
     border-color: #b79b5c;
     background: linear-gradient(155deg, #2b302b, #202725 55%, #1b2326);
@@ -811,6 +842,7 @@ body.events-open {
 }
 
 /* PLATINUM */
+
 .package-card.platinum {
     border-color: rgba(209,179,109,.65);
     background: linear-gradient(155deg, #293236, #20292c 55%, #171d20);
@@ -831,7 +863,10 @@ body.events-open {
     color: #e1c47e;
 }
 
-/* NAVIGARE CARUSEL */
+/* ==========================================
+   NAVIGARE CARUSELE
+   ========================================== */
+
 .carousel-navigation {
     display: none;
 }
@@ -868,6 +903,7 @@ body.events-open {
 }
 
 /* FOOTER PACHETE */
+
 .packages-footer {
     margin-top: 30px;
     padding-top: 20px;
@@ -890,6 +926,7 @@ body.events-open {
 }
 
 /* FOCUS */
+
 button:focus-visible,
 a:focus-visible {
     outline: 2px solid #e2ca91;
@@ -901,6 +938,7 @@ a:focus-visible {
    ========================================== */
 
 @media (min-width: 951px) {
+
     .events-modal {
         width: 94%;
         max-width: 1350px;
@@ -915,6 +953,8 @@ a:focus-visible {
     .events-heading h2 {
         font-size: 30px;
     }
+
+    /* PACHETE: INCADRARE IN ECRAN */
 
     .events-modal:has(#packagesView:not([hidden])) {
         width: 96%;
@@ -960,7 +1000,6 @@ a:focus-visible {
         top: -48px;
         left: 0;
         padding: 8px 12px;
-        font-size: 12px;
     }
 
     .packages-grid {
@@ -970,7 +1009,6 @@ a:focus-visible {
         grid-template-columns: repeat(3, minmax(0, 1fr));
         align-items: stretch;
         gap: 17px;
-        width: 100%;
     }
 
     .package-card {
@@ -985,9 +1023,21 @@ a:focus-visible {
         padding-top: 43px;
     }
 
-    .package-top h3 { font-size: 25px; }
-    .gold .package-top h3 { font-size: 28px; }
-    .platinum .package-top h3 { font-size: 27px; }
+    .package-top h3 {
+        font-size: 25px;
+    }
+
+    .gold .package-top h3 {
+        font-size: 28px;
+    }
+
+    .platinum .package-top h3 {
+        font-size: 27px;
+    }
+
+    .package-price {
+        font-size: 16px;
+    }
 
     .package-label {
         font-size: 9px;
@@ -1033,14 +1083,12 @@ a:focus-visible {
         padding: 8px 6px;
         margin-bottom: 10px;
         font-size: 10px;
-        line-height: 1.3;
     }
 
     .package-button {
         flex-shrink: 0;
         min-height: 40px;
         padding: 9px 10px;
-        margin-top: 0;
         font-size: 11px;
     }
 
@@ -1057,26 +1105,85 @@ a:focus-visible {
 
     .packages-footer p {
         font-size: 11px;
-        line-height: 1.3;
     }
 }
 
 /* LAPTOP CU INALTIME REDUSA */
+
 @media (min-width: 951px) and (max-height: 800px) {
+
+    .site-shell {
+        grid-template-rows: 62px minmax(230px, 30vh) minmax(350px, 1fr) 4px auto 4px;
+    }
+
+    .services {
+        padding: 10px 6%;
+    }
+
+    .service-box {
+        padding: 10px;
+    }
+
+    .service-box h2 {
+        min-height: 48px;
+        font-size: clamp(17px, 1.5vw, 22px);
+    }
+
+    .service-box img {
+        height: clamp(125px, 19vh, 175px);
+    }
+
+    .gold-line {
+        margin: 10px auto;
+    }
+
+    .service-box p {
+        font-size: 12px;
+        line-height: 1.4;
+    }
+
+    .footer {
+        min-height: 85px;
+        padding: 8px 6%;
+    }
+
+    .contact-item {
+        font-size: 11px;
+        gap: 8px;
+    }
+}
+
+@media (min-width: 951px) and (max-height: 750px) {
+
     .events-modal:has(#packagesView:not([hidden])) {
         height: 94vh;
         max-height: 94vh;
         padding: 58px 24px 12px;
     }
 
-    .packages-heading { margin-bottom: 10px; }
-    .packages-heading h2 { font-size: 25px; }
-    .packages-grid { gap: 13px; }
+    .packages-heading {
+        margin-bottom: 10px;
+    }
 
-    .package-card { padding: 12px 12px 10px; }
-    .package-card.gold { padding-top: 39px; }
+    .packages-heading h2 {
+        font-size: 25px;
+    }
 
-    .package-features { gap: 3px; }
+    .packages-grid {
+        gap: 13px;
+    }
+
+    .package-card {
+        padding: 12px 12px 10px;
+    }
+
+    .package-card.gold {
+        padding-top: 39px;
+    }
+
+    .package-features {
+        gap: 3px;
+    }
 
     .package-features li {
         font-size: 10px;
@@ -1101,6 +1208,7 @@ a:focus-visible {
    ========================================== */
 
 @media (min-width: 521px) and (max-width: 950px) {
+
     .site-shell {
         display: flex;
         flex-direction: column;
@@ -1167,10 +1275,25 @@ a:focus-visible {
         row-gap: 18px;
     }
 
-    .email { grid-column: 1; grid-row: 1; }
-    .phone { grid-column: 1; grid-row: 2; }
-    .instagram { grid-column: 2; grid-row: 1; }
-    .facebook { grid-column: 2; grid-row: 2; }
+    .email {
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    .phone {
+        grid-column: 1;
+        grid-row: 2;
+    }
+
+    .instagram {
+        grid-column: 2;
+        grid-row: 1;
+    }
+
+    .facebook {
+        grid-column: 2;
+        grid-row: 2;
+    }
 
     .address {
         grid-column: 1 / 3;
@@ -1227,6 +1350,9 @@ a:focus-visible {
    ========================================== */
 
 @media (max-width: 520px) {
+
+    /* PAGINA PRINCIPALA */
+
     .site-shell {
         display: flex;
         flex-direction: column;
@@ -1245,7 +1371,9 @@ a:focus-visible {
         gap: 5px;
     }
 
-    .logo-wreath { height: 45px; }
+    .logo-wreath {
+        height: 45px;
+    }
 
     .navigation {
         width: 100%;
@@ -1255,7 +1383,9 @@ a:focus-visible {
         padding: 5px 0;
     }
 
-    .navigation a { font-size: 11px; }
+    .navigation a {
+        font-size: 11px;
+    }
 
     .main-banner {
         width: 100%;
@@ -1387,8 +1517,9 @@ a:focus-visible {
         border-top: 1px solid rgba(193,163,101,.3);
     }
 
-    /* POPUP PE TELEFON */
-    .events-overlay {
+    /* POPUP */
+
+    .events-popup {
         padding: 7px;
         align-items: center;
         justify-content: center;
@@ -1400,8 +1531,7 @@ a:focus-visible {
         max-width: 440px;
         height: auto;
         max-height: calc(100dvh - 14px);
-        max-height: calc(100svh - 14px);
-        padding: 48px 0 12px;
+        padding: 43px 0 12px;
         margin: auto;
         overflow-x: hidden;
         overflow-y: auto;
@@ -1409,26 +1539,25 @@ a:focus-visible {
         -webkit-overflow-scrolling: touch;
     }
 
-    .events-close {
+    .close-popup {
         top: 7px;
         right: 9px;
         width: 34px;
         height: 34px;
     }
 
-    /* TITLU EVENIMENTE */
+    /* EVENIMENTE */
+
     .events-heading {
         padding: 0 17px;
         margin-bottom: 15px;
     }
 
-    .events-heading h2,
-    .packages-heading h2 {
+    .events-heading h2 {
         font-size: 24px;
     }
 
-    .events-heading p,
-    .packages-heading > p {
+    .events-heading p {
         font-size: 11px;
         line-height: 1.4;
     }
@@ -1443,7 +1572,6 @@ a:focus-visible {
         margin: 9px auto;
     }
 
-    /* CARUSEL EVENIMENTE */
     .events-cards {
         display: flex;
         flex-direction: row;
@@ -1471,42 +1599,26 @@ a:focus-visible {
         flex: 0 0 100%;
         width: 100%;
         min-width: 100%;
-        scroll-snap-align: start;
+        min-height: 175px;
+        scroll-snap-align: center;
         scroll-snap-stop: always;
     }
 
-    .event-card:hover { transform: none; }
-
-    .event-image {
-        aspect-ratio: 16 / 9;
+    .event-card:hover {
+        transform: none;
     }
 
-    .event-info {
-        padding: 12px 14px 14px;
+    .event-card h3 {
+        font-size: 22px;
     }
 
-    .event-category {
-        font-size: 8px;
-        margin-bottom: 5px;
-    }
-
-    .event-info h3 {
-        font-size: 20px;
-        margin-bottom: 5px;
-    }
-
-    .event-info p {
+    .event-card p {
         font-size: 12px;
         line-height: 1.4;
-        margin-bottom: 10px;
     }
 
-    .event-link {
-        min-height: 28px;
-        font-size: 12px;
-    }
+    /* NAVIGARE */
 
-    /* NAVIGARE CARUSEL */
     .carousel-navigation {
         display: flex;
         flex-direction: column;
@@ -1536,350 +1648,17 @@ a:focus-visible {
     }
 
     /* ECRAN PACHETE */
-    .packages-heading {
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 0 12px;
-        margin-bottom: 10px;
-    }
 
-    /* Butonul inapoi aliniat cu X */
-    .back-button {
-        position: absolute;
-        top: -40px;
-        left: 10px;
-        align-self: auto;
-        min-height: 34px;
-        margin: 0;
-        padding: 6px 9px;
-        gap: 5px;
-        font-size: 10px;
-        white-space: nowrap;
-        z-index: 25;
-    }
-
-    .back-button span {
-        font-size: 15px;
-    }
-
-    .packages-heading .events-eyebrow {
-        margin-top: 0;
-    }
-
-    .packages-heading h2 {
-        font-size: 22px;
-        line-height: 1.2;
-    }
-
-    .packages-heading .events-heading-line {
-        margin: 7px auto;
-    }
-
-    /* CARUSEL PACHETE */
-    .packages-grid {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: nowrap;
-        align-items: stretch;
-        width: 100%;
-        height: auto;
-        gap: 10px;
-        padding: 4px 12px 8px;
-        overflow-x: auto;
-        overflow-y: hidden;
-        scroll-snap-type: x mandatory;
-        scroll-snap-stop: always;
-        scroll-behavior: smooth;
-        -webkit-overflow-scrolling: touch;
-        overscroll-behavior-x: contain;
-        scrollbar-width: none;
-    }
-
-    /* CARD COMPLET - FARA SCROLL VERTICAL */
-    .package-card {
-        flex: 0 0 100%;
-        width: 100%;
-        min-width: 100%;
-        max-width: 100%;
-        height: clamp(480px, calc(100svh - 190px), 610px);
-        min-height: 0;
-        max-height: none;
-        padding: 12px 13px 11px;
-        display: flex;
-        flex-direction: column;
-        overflow: hidden;
-        scroll-snap-align: start;
-        scroll-snap-stop: always;
-        box-sizing: border-box;
-    }
-
-    .package-card.gold {
-        padding-top: 34px;
-    }
-
-    .package-card.platinum {
-        padding-top: 12px;
-    }
-
-    .popular-label {
-        padding: 5px 3px;
-        font-size: 8px;
-        letter-spacing: 1.1px;
-    }
-
-    .package-top {
-        flex: 0 0 auto;
-    }
-
-    .package-label {
-        font-size: 8px;
-        letter-spacing: 2px;
-        margin-bottom: 3px;
-    }
-
-    .package-top h3 {
-        font-size: 25px;
-        line-height: 1.1;
-    }
-
-    .gold .package-top h3 {
-        font-size: 27px;
-    }
-
-    .platinum .package-top h3 {
-        font-size: 26px;
-    }
-
-    .package-description {
-        min-height: 0;
-        margin-top: 4px;
-        font-size: 10px;
-        line-height: 1.25;
-    }
-
-    .package-divider {
-        flex: 0 0 1px;
-        width: 42px;
-        margin: 8px auto 9px;
-    }
-
-    .gold .package-divider,
-    .platinum .package-divider {
-        width: 55px;
-        margin: 8px auto 9px;
-    }
-
-    /* Lista se incadreaza in card, fara derulare */
-    .package-features {
-        flex: 1 1 auto;
-        min-height: 0;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-evenly;
-        gap: 3px;
-        margin: 0 0 7px;
-        overflow: hidden;
-    }
-
-    .package-features li {
-        flex: 0 0 auto;
-        padding-left: 16px;
-        font-size: clamp(9px, 2.65vw, 11px);
-        line-height: 1.2;
-    }
-
-    .package-features li::before {
-        font-size: 11px;
-    }
-
-    .package-delivery {
-        flex: 0 0 auto;
-        min-height: 30px;
-        padding: 6px 5px;
-        margin: 0 0 7px;
-        gap: 5px;
-        font-size: 9px;
-        line-height: 1.2;
-    }
-
-    .delivery-icon {
-        font-size: 12px;
-    }
-
-    .package-button {
-        flex: 0 0 auto;
-        width: 100%;
-        min-height: 36px;
-        padding: 7px 9px;
-        font-size: 10px;
-    }
-
-    .package-button span {
-        font-size: 15px;
-    }
-
-    /* Indicator pachete */
-    #packagesNavigation {
-        margin: 0;
-        padding: 7px 10px 5px;
-        gap: 7px;
-    }
-
-    /* Ascundem textul de sub pachete pentru a pastra spatiu */
-    .packages-footer {
-        display: none;
-    }
-}
-
-/* TELEFOANE FOARTE MICI */
-@media (max-width: 360px) {
-    .navigation {
-        gap: 8px 10px;
-    }
-
-    .navigation a {
-        font-size: 10px;
-    }
-
-    .main-title {
-        font-size: 19px;
-        gap: 5px;
-    }
-
-    .services {
-        padding: 20px 4%;
-    }
-
-    .service-box {
-        padding: 10px;
-    }
-
-    .service-box h2 {
-        font-size: 21px;
-    }
-
-    .service-box p {
-        font-size: 14px;
-    }
-
-    .footer {
-        padding: 23px 5%;
-    }
-
-    .contact-item {
-        font-size: 11px;
-    }
-
-    .events-heading h2,
-    .packages-heading h2 {
-        font-size: 21px;
-    }
-
-    .package-card {
-        padding-left: 10px;
-        padding-right: 10px;
-    }
-
-    .package-features li {
-        font-size: 9px;
-    }
-
-    .package-delivery {
-        font-size: 8px;
-    }
-}
-
-/* LAPTOP CU INALTIME REDUSA */
-@media (min-width: 951px) and (max-height: 750px) {
-    .site-shell {
-        grid-template-rows: 62px minmax(230px, 30vh) minmax(350px, 1fr) 4px auto 4px;
-    }
-
-    .services {
-        padding: 10px 6%;
-    }
-
-    .service-box {
-        padding: 10px;
-    }
-
-    .service-box h2 {
-        min-height: 48px;
-        font-size: clamp(17px, 1.5vw, 22px);
-    }
-
-    .service-box img {
-        height: clamp(125px, 19vh, 175px);
-    }
-
-    .gold-line {
-        margin: 10px auto;
-    }
-
-    .service-box p {
-        font-size: 12px;
-        line-height: 1.4;
-    }
-
-    .footer {
-        min-height: 85px;
-        padding: 8px 6%;
-    }
-
-    .contact-item {
-        font-size: 11px;
-        gap: 8px;
-    }
-}
-
-/* ASCUNDE CARUSELE PE DESKTOP */
-@media (min-width: 701px) {
-    .carousel-navigation {
-        display: none !important;
-    }
-}
-
-/* REDUCERE ANIMATII */
-@media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-        scroll-behavior: auto !important;
-        animation-duration: .01ms !important;
-        transition-duration: .01ms !important;
-    }
-}
-/* ==========================================
-   AJUSTARI FINALE POPUP - TELEFOANE
-   Laptopul ramane neschimbat
-   ========================================== */
-
-.package-price {
-    margin-top: 5px;
-    color: #d1b36d;
-    font-size: 18px;
-    font-weight: normal;
-    letter-spacing: .5px;
-    line-height: 1.2;
-}
-
-@media (max-width: 520px) {
-
-    /* Fereastra popup */
     .events-modal:has(#packagesView:not([hidden])) {
         display: flex;
         flex-direction: column;
         width: 100%;
         height: calc(100dvh - 14px);
-        height: calc(100svh - 14px);
-        max-height: calc(100svh - 14px);
+        max-height: calc(100dvh - 14px);
         padding: 43px 0 5px;
         overflow: hidden;
     }
 
-    /* Ecranul de pachete ocupa spatiul disponibil */
     #packagesView {
         display: flex;
         flex: 1 1 auto;
@@ -1893,7 +1672,6 @@ a:focus-visible {
         display: none !important;
     }
 
-    /* Titlul urcat mai sus si compact */
     .packages-heading {
         flex: 0 0 auto;
         position: relative;
@@ -1925,7 +1703,8 @@ a:focus-visible {
         line-height: 1.25;
     }
 
-    /* Buton inapoi: doar sageata pe telefon */
+    /* BUTON INAPOI */
+
     .back-button {
         position: absolute;
         top: -34px;
@@ -1952,7 +1731,8 @@ a:focus-visible {
         display: none;
     }
 
-    /* Carusel pachete - carduri mai inguste */
+    /* CARUSEL PACHETE */
+
     .packages-grid {
         display: flex;
         flex: 1 1 auto;
@@ -1975,11 +1755,8 @@ a:focus-visible {
         scrollbar-width: none;
     }
 
-    .packages-grid::-webkit-scrollbar {
-        display: none;
-    }
+    /* CARDURI */
 
-    /* Fiecare card ocupa aproximativ 86% din latime */
     .package-card {
         flex: 0 0 86%;
         width: 86%;
@@ -2016,7 +1793,8 @@ a:focus-visible {
         letter-spacing: .9px;
     }
 
-    /* Titlu si pret */
+    /* TITLU SI PRET */
+
     .package-top {
         flex: 0 0 auto;
         text-align: center;
@@ -2054,11 +1832,12 @@ a:focus-visible {
         line-height: 1.2;
     }
 
-    /* Separator */
+    /* SEPARATOR */
+
     .package-divider {
         flex: 0 0 1px;
         width: 40px;
-        margin: 7px auto 7px;
+        margin: 7px auto;
     }
 
     .gold .package-divider,
@@ -2067,14 +1846,15 @@ a:focus-visible {
         margin: 7px auto;
     }
 
-    /* Lista de beneficii */
+    /* BENEFICII */
+
     .package-features {
         flex: 1 1 auto;
         min-height: 0;
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
-        gap: 1px;
+        gap: 2px;
         margin: 0 0 5px;
         padding: 0;
         overflow: hidden;
@@ -2091,7 +1871,8 @@ a:focus-visible {
         font-size: 10px;
     }
 
-    /* Predare */
+    /* PREDARE */
+
     .package-delivery {
         flex: 0 0 auto;
         min-height: 27px;
@@ -2106,7 +1887,8 @@ a:focus-visible {
         font-size: 11px;
     }
 
-    /* Buton oferta */
+    /* BUTON */
+
     .package-button {
         flex: 0 0 auto;
         width: 100%;
@@ -2119,7 +1901,8 @@ a:focus-visible {
         font-size: 14px;
     }
 
-    /* Indicatori */
+    /* INDICATORI */
+
     #packagesNavigation {
         flex: 0 0 auto;
         width: 100%;
@@ -2150,8 +1933,53 @@ a:focus-visible {
     }
 }
 
-/* Telefoane foarte mici */
+/* ==========================================
+   TELEFOANE FOARTE MICI
+   ========================================== */
+
 @media (max-width: 360px) {
+
+    .navigation {
+        gap: 8px 10px;
+    }
+
+    .navigation a {
+        font-size: 10px;
+    }
+
+    .main-title {
+        font-size: 19px;
+        gap: 5px;
+    }
+
+    .services {
+        padding: 20px 4%;
+    }
+
+    .service-box {
+        padding: 10px;
+    }
+
+    .service-box h2 {
+        font-size: 21px;
+    }
+
+    .service-box p {
+        font-size: 14px;
+    }
+
+    .footer {
+        padding: 23px 5%;
+    }
+
+    .contact-item {
+        font-size: 11px;
+    }
+
+    .events-heading h2 {
+        font-size: 21px;
+    }
+
     .packages-heading h2 {
         font-size: 19px;
     }
@@ -2176,5 +2004,26 @@ a:focus-visible {
 
     .package-delivery {
         font-size: 7px;
+    }
+}
+
+/* ASCUNDE INDICATORII PE DESKTOP */
+
+@media (min-width: 521px) {
+    .carousel-navigation {
+        display: none !important;
+    }
+}
+
+/* REDUCERE ANIMATII */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
     }
 }
