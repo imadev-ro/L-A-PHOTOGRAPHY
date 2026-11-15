@@ -1,7 +1,11 @@
-
 document.addEventListener("DOMContentLoaded", () => {
 
+    /* ==========================================
+       ELEMENTE
+       ========================================== */
+
     const popup = document.getElementById("eventsPopup");
+
     if (!popup) return;
 
     const modal = popup.querySelector(".events-modal");
@@ -21,16 +25,23 @@ document.addEventListener("DOMContentLoaded", () => {
     const eventsDots = document.getElementById("eventsDots");
     const packagesDots = document.getElementById("packagesDots");
 
+    /* NUMĂR WHATSAPP */
+
     const photographerPhone = "40730548517";
 
     let currentEvent = "";
     let previousFocus = null;
 
-    const isMobile = () => window.matchMedia("(max-width: 520px)").matches;
+    const isMobile = () =>
+        window.matchMedia("(max-width: 520px)").matches;
 
-    /* DESCHIDERE POPUP */
+
+    /* ==========================================
+       DESCHIDERE POPUP
+       ========================================== */
 
     function openPopup() {
+
         previousFocus = document.activeElement;
 
         popup.classList.add("active");
@@ -40,41 +51,64 @@ document.addEventListener("DOMContentLoaded", () => {
 
         showEvents();
 
-        closeButton.focus();
+        if (closeButton) {
+            closeButton.focus();
+        }
     }
 
-    /* INCHIDERE POPUP */
+
+    /* ==========================================
+       ÎNCHIDERE POPUP
+       ========================================== */
 
     function closePopup() {
+
         popup.classList.remove("active");
         popup.setAttribute("aria-hidden", "true");
 
         document.body.classList.remove("events-open");
 
-        if (previousFocus && typeof previousFocus.focus === "function") {
+        if (
+            previousFocus &&
+            typeof previousFocus.focus === "function"
+        ) {
             previousFocus.focus();
         }
     }
 
+
     openButton?.addEventListener("click", openPopup);
+
     closeButton?.addEventListener("click", closePopup);
 
+
+    /* ÎNCHIDERE LA CLICK ÎN AFARA FERESTREI */
+
     popup.addEventListener("click", (event) => {
+
         if (event.target === popup) {
             closePopup();
         }
+
     });
+
+
+    /* ==========================================
+       TASTATURĂ
+       ========================================== */
 
     document.addEventListener("keydown", (event) => {
 
         if (!popup.classList.contains("active")) return;
 
         if (event.key === "Escape") {
+
             closePopup();
+
             return;
         }
 
-        if (event.key === "Tab") {
+        if (event.key === "Tab" && modal) {
 
             const focusable = modal.querySelectorAll(
                 'button:not([disabled]), a[href], [tabindex]:not([tabindex="-1"])'
@@ -85,54 +119,115 @@ document.addEventListener("DOMContentLoaded", () => {
             const first = focusable[0];
             const last = focusable[focusable.length - 1];
 
-            if (event.shiftKey && document.activeElement === first) {
+            if (
+                event.shiftKey &&
+                document.activeElement === first
+            ) {
                 event.preventDefault();
                 last.focus();
-            } else if (!event.shiftKey && document.activeElement === last) {
+
+            } else if (
+                !event.shiftKey &&
+                document.activeElement === last
+            ) {
                 event.preventDefault();
                 first.focus();
             }
         }
+
     });
 
-    /* SCHIMBARE ECRANE */
+
+    /* ==========================================
+       RESET CARUSEL
+       ========================================== */
+
+    function resetCarousel(container) {
+
+        if (!container) return;
+
+        container.scrollTo({
+            left: 0,
+            behavior: "instant"
+        });
+
+    }
+
+
+    /* ==========================================
+       AFIȘARE EVENIMENTE
+       ========================================== */
 
     function showEvents() {
+
+        if (!eventsView || !packagesView) return;
 
         eventsView.hidden = false;
         packagesView.hidden = true;
 
         currentEvent = "";
 
-        modal.scrollTop = 0;
+        if (modal) {
+            modal.scrollTop = 0;
+        }
 
         resetCarousel(eventsCards);
-        updateDots(eventsCards, eventsDots);
+
+        requestAnimationFrame(() => {
+
+            updateDots(eventsCards, eventsDots);
+
+        });
+
     }
+
+
+    /* ==========================================
+       AFIȘARE PACHETE
+       ========================================== */
 
     function showPackages(eventName) {
 
+        if (!eventsView || !packagesView) return;
+
         currentEvent = eventName;
-        selectedEventText.textContent = eventName;
+
+        if (selectedEventText) {
+            selectedEventText.textContent = eventName;
+        }
 
         eventsView.hidden = true;
         packagesView.hidden = false;
 
-        modal.scrollTop = 0;
+        if (modal) {
+            modal.scrollTop = 0;
+        }
 
         resetCarousel(packagesGrid);
 
         requestAnimationFrame(() => {
-            modal.scrollTop = 0;
+
+            if (modal) {
+                modal.scrollTop = 0;
+            }
+
             updateDots(packagesGrid, packagesDots);
+
         });
+
     }
 
-    backButton.addEventListener("click", showEvents);
 
-    /* SELECTARE EVENIMENT */
+    /* ÎNAPOI LA EVENIMENTE */
 
-    document.querySelectorAll(".event-button[data-event]").forEach((button) => {
+    backButton?.addEventListener("click", showEvents);
+
+
+    /* ==========================================
+       SELECTARE EVENIMENT
+       ========================================== */
+
+    document.querySelectorAll("[data-event]").forEach((button) => {
 
         button.addEventListener("click", () => {
 
@@ -141,13 +236,17 @@ document.addEventListener("DOMContentLoaded", () => {
             if (!eventName) return;
 
             showPackages(eventName);
+
         });
 
     });
 
-    /* WHATSAPP */
 
-    document.querySelectorAll(".package-button[data-package]").forEach((button) => {
+    /* ==========================================
+       WHATSAPP
+       ========================================== */
+
+    document.querySelectorAll("[data-package]").forEach((button) => {
 
         button.addEventListener("click", () => {
 
@@ -163,14 +262,22 @@ document.addEventListener("DOMContentLoaded", () => {
             const whatsappURL =
                 `https://wa.me/${photographerPhone}?text=${encodeURIComponent(message)}`;
 
-            window.open(whatsappURL, "_blank", "noopener,noreferrer");
+            window.open(
+                whatsappURL,
+                "_blank",
+                "noopener,noreferrer"
+            );
 
             closePopup();
+
         });
 
     });
 
-    /* CARUSELE */
+
+    /* ==========================================
+       FUNCȚII CARUSELE
+       ========================================== */
 
     function getCards(container) {
 
@@ -178,21 +285,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
         return Array.from(container.children).filter((element) => {
 
-            return element.classList.contains("event-card") ||
-                   element.classList.contains("package-card");
+            return (
+                element.classList.contains("event-card") ||
+                element.classList.contains("package-card")
+            );
 
         });
+
     }
 
-    function resetCarousel(container) {
 
-        if (!container) return;
-
-        container.scrollTo({
-            left: 0,
-            behavior: "instant"
-        });
-    }
+    /* IDENTIFICĂ CARDUL ACTIV */
 
     function getActiveIndex(container) {
 
@@ -201,7 +304,9 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!cards.length) return 0;
 
         const containerRect = container.getBoundingClientRect();
-        const center = containerRect.left + container.clientWidth / 2;
+
+        const center =
+            containerRect.left + container.clientWidth / 2;
 
         let closestIndex = 0;
         let closestDistance = Infinity;
@@ -209,19 +314,28 @@ document.addEventListener("DOMContentLoaded", () => {
         cards.forEach((card, index) => {
 
             const rect = card.getBoundingClientRect();
+
             const cardCenter = rect.left + rect.width / 2;
 
             const distance = Math.abs(cardCenter - center);
 
             if (distance < closestDistance) {
+
                 closestDistance = distance;
                 closestIndex = index;
+
             }
 
         });
 
         return closestIndex;
+
     }
+
+
+    /* ==========================================
+       CREARE INDICATORI
+       ========================================== */
 
     function createDots(container, dotsContainer) {
 
@@ -238,14 +352,20 @@ document.addEventListener("DOMContentLoaded", () => {
             dot.type = "button";
             dot.className = "carousel-dot";
 
-            dot.setAttribute("aria-label", `Cardul ${index + 1}`);
+            dot.setAttribute(
+                "aria-label",
+                `Cardul ${index + 1}`
+            );
 
             dot.addEventListener("click", () => {
 
                 if (!isMobile()) return;
 
-                const containerRect = container.getBoundingClientRect();
-                const cardRect = card.getBoundingClientRect();
+                const containerRect =
+                    container.getBoundingClientRect();
+
+                const cardRect =
+                    card.getBoundingClientRect();
 
                 const cardLeft =
                     cardRect.left -
@@ -268,13 +388,20 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         updateDots(container, dotsContainer);
+
     }
+
+
+    /* ==========================================
+       ACTUALIZARE INDICATORI
+       ========================================== */
 
     function updateDots(container, dotsContainer) {
 
         if (!container || !dotsContainer) return;
 
         const dots = Array.from(dotsContainer.children);
+
         const activeIndex = getActiveIndex(container);
 
         dots.forEach((dot, index) => {
@@ -284,13 +411,23 @@ document.addEventListener("DOMContentLoaded", () => {
             dot.classList.toggle("active", active);
 
             if (active) {
+
                 dot.setAttribute("aria-current", "true");
+
             } else {
+
                 dot.removeAttribute("aria-current");
+
             }
 
         });
+
     }
+
+
+    /* ==========================================
+       INIȚIALIZARE CARUSEL
+       ========================================== */
 
     function setupCarousel(container, dotsContainer) {
 
@@ -305,22 +442,42 @@ document.addEventListener("DOMContentLoaded", () => {
             clearTimeout(scrollTimeout);
 
             scrollTimeout = setTimeout(() => {
+
                 updateDots(container, dotsContainer);
+
             }, 50);
 
         }, { passive: true });
+
     }
 
+
+    /* PORNIRE CARUSELE */
+
     setupCarousel(eventsCards, eventsDots);
+
     setupCarousel(packagesGrid, packagesDots);
 
-    /* REDIMENSIONARE */
+
+    /* ==========================================
+       REDIMENSIONARE FEREASTRĂ
+       ========================================== */
+
+    let resizeTimeout;
 
     window.addEventListener("resize", () => {
 
-        createDots(eventsCards, eventsDots);
-        createDots(packagesGrid, packagesDots);
+        clearTimeout(resizeTimeout);
+
+        resizeTimeout = setTimeout(() => {
+
+            createDots(eventsCards, eventsDots);
+
+            createDots(packagesGrid, packagesDots);
+
+        }, 150);
 
     });
+
 
 });
