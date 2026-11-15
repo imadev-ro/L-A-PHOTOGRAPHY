@@ -1,5 +1,9 @@
+
 document.addEventListener("DOMContentLoaded", () => {
+
     const popup = document.getElementById("eventsPopup");
+    if (!popup) return;
+
     const modal = popup.querySelector(".events-modal");
 
     const openButton = document.getElementById("openEvents");
@@ -24,9 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const isMobile = () => window.matchMedia("(max-width: 520px)").matches;
 
-    /* =====================================
-       DESCHIDERE / INCHIDERE POPUP
-    ===================================== */
+    /* DESCHIDERE POPUP */
 
     function openPopup() {
         previousFocus = document.activeElement;
@@ -41,19 +43,21 @@ document.addEventListener("DOMContentLoaded", () => {
         closeButton.focus();
     }
 
+    /* INCHIDERE POPUP */
+
     function closePopup() {
         popup.classList.remove("active");
         popup.setAttribute("aria-hidden", "true");
 
         document.body.classList.remove("events-open");
 
-        if (previousFocus) {
+        if (previousFocus && typeof previousFocus.focus === "function") {
             previousFocus.focus();
         }
     }
 
-    openButton.addEventListener("click", openPopup);
-    closeButton.addEventListener("click", closePopup);
+    openButton?.addEventListener("click", openPopup);
+    closeButton?.addEventListener("click", closePopup);
 
     popup.addEventListener("click", (event) => {
         if (event.target === popup) {
@@ -62,13 +66,16 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     document.addEventListener("keydown", (event) => {
+
         if (!popup.classList.contains("active")) return;
 
         if (event.key === "Escape") {
             closePopup();
+            return;
         }
 
         if (event.key === "Tab") {
+
             const focusable = modal.querySelectorAll(
                 'button:not([disabled]), a[href], [tabindex]:not([tabindex="-1"])'
             );
@@ -88,11 +95,10 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    /* =====================================
-       SCHIMBARE ECRANE
-    ===================================== */
+    /* SCHIMBARE ECRANE */
 
     function showEvents() {
+
         eventsView.hidden = false;
         packagesView.hidden = true;
 
@@ -105,8 +111,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function showPackages(eventName) {
-        currentEvent = eventName;
 
+        currentEvent = eventName;
         selectedEventText.textContent = eventName;
 
         eventsView.hidden = true;
@@ -124,26 +130,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
     backButton.addEventListener("click", showEvents);
 
-    /* =====================================
-       SELECTARE EVENIMENT
-    ===================================== */
+    /* SELECTARE EVENIMENT */
 
-    document.querySelectorAll(".event-link[data-event]").forEach((button) => {
+    document.querySelectorAll(".event-button[data-event]").forEach((button) => {
+
         button.addEventListener("click", () => {
+
             const eventName = button.dataset.event;
 
             if (!eventName) return;
 
             showPackages(eventName);
         });
+
     });
 
-    /* =====================================
-       SOLICITARE OFERTA WHATSAPP
-    ===================================== */
+    /* WHATSAPP */
 
     document.querySelectorAll(".package-button[data-package]").forEach((button) => {
+
         button.addEventListener("click", () => {
+
             const packageName = button.dataset.package;
 
             if (!currentEvent || !packageName) return;
@@ -160,22 +167,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
             closePopup();
         });
+
     });
 
-    /* =====================================
-       CARUSELE SI INDICATORI
-    ===================================== */
+    /* CARUSELE */
 
     function getCards(container) {
+
         if (!container) return [];
 
         return Array.from(container.children).filter((element) => {
+
             return element.classList.contains("event-card") ||
                    element.classList.contains("package-card");
+
         });
     }
 
     function resetCarousel(container) {
+
         if (!container) return;
 
         container.scrollTo({
@@ -184,34 +194,37 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    /* Cardul cel mai apropiat de centrul caruselului */
     function getActiveIndex(container) {
+
         const cards = getCards(container);
 
         if (!cards.length) return 0;
 
         const containerRect = container.getBoundingClientRect();
-        const containerCenter = containerRect.left + container.clientWidth / 2;
+        const center = containerRect.left + container.clientWidth / 2;
 
         let closestIndex = 0;
         let closestDistance = Infinity;
 
         cards.forEach((card, index) => {
-            const cardRect = card.getBoundingClientRect();
-            const cardCenter = cardRect.left + cardRect.width / 2;
 
-            const distance = Math.abs(cardCenter - containerCenter);
+            const rect = card.getBoundingClientRect();
+            const cardCenter = rect.left + rect.width / 2;
+
+            const distance = Math.abs(cardCenter - center);
 
             if (distance < closestDistance) {
                 closestDistance = distance;
                 closestIndex = index;
             }
+
         });
 
         return closestIndex;
     }
 
     function createDots(container, dotsContainer) {
+
         if (!container || !dotsContainer) return;
 
         const cards = getCards(container);
@@ -219,18 +232,16 @@ document.addEventListener("DOMContentLoaded", () => {
         dotsContainer.innerHTML = "";
 
         cards.forEach((card, index) => {
+
             const dot = document.createElement("button");
 
             dot.type = "button";
             dot.className = "carousel-dot";
+
             dot.setAttribute("aria-label", `Cardul ${index + 1}`);
 
-            if (index === 0) {
-                dot.classList.add("active");
-                dot.setAttribute("aria-current", "true");
-            }
-
             dot.addEventListener("click", () => {
+
                 if (!isMobile()) return;
 
                 const containerRect = container.getBoundingClientRect();
@@ -241,40 +252,48 @@ document.addEventListener("DOMContentLoaded", () => {
                     containerRect.left +
                     container.scrollLeft;
 
-                const centeredPosition =
+                const position =
                     cardLeft -
                     (container.clientWidth - card.clientWidth) / 2;
 
                 container.scrollTo({
-                    left: centeredPosition,
+                    left: position,
                     behavior: "smooth"
                 });
+
             });
 
             dotsContainer.appendChild(dot);
+
         });
+
+        updateDots(container, dotsContainer);
     }
 
     function updateDots(container, dotsContainer) {
+
         if (!container || !dotsContainer) return;
 
         const dots = Array.from(dotsContainer.children);
         const activeIndex = getActiveIndex(container);
 
         dots.forEach((dot, index) => {
-            const isActive = index === activeIndex;
 
-            dot.classList.toggle("active", isActive);
+            const active = index === activeIndex;
 
-            if (isActive) {
+            dot.classList.toggle("active", active);
+
+            if (active) {
                 dot.setAttribute("aria-current", "true");
             } else {
                 dot.removeAttribute("aria-current");
             }
+
         });
     }
 
     function setupCarousel(container, dotsContainer) {
+
         if (!container || !dotsContainer) return;
 
         createDots(container, dotsContainer);
@@ -282,26 +301,26 @@ document.addEventListener("DOMContentLoaded", () => {
         let scrollTimeout;
 
         container.addEventListener("scroll", () => {
-            window.clearTimeout(scrollTimeout);
 
-            scrollTimeout = window.setTimeout(() => {
+            clearTimeout(scrollTimeout);
+
+            scrollTimeout = setTimeout(() => {
                 updateDots(container, dotsContainer);
             }, 50);
+
         }, { passive: true });
     }
 
     setupCarousel(eventsCards, eventsDots);
     setupCarousel(packagesGrid, packagesDots);
 
-    /* =====================================
-       REDIMENSIONARE FEREASTRA
-    ===================================== */
+    /* REDIMENSIONARE */
 
     window.addEventListener("resize", () => {
+
         createDots(eventsCards, eventsDots);
         createDots(packagesGrid, packagesDots);
 
-        updateDots(eventsCards, eventsDots);
-        updateDots(packagesGrid, packagesDots);
     });
+
 });
