@@ -1,8 +1,7 @@
 
 /* ==========================================
    L&A PHOTOGRAPHY
-   DESIGN RESPONSIVE COMPLET
-   DESKTOP - TABLETA - TELEFON
+   DESIGN RESPONSIVE
    ========================================== */
 
 /* RESET */
@@ -38,7 +37,7 @@ body.events-open {
 }
 
 /* ==========================================
-   CONTAINER PRINCIPAL
+   STRUCTURA PRINCIPALA
    ========================================== */
 
 .site-shell {
@@ -124,7 +123,7 @@ body.events-open {
 }
 
 /* ==========================================
-   FOTOGRAFIE PRINCIPALA
+   BANNER PRINCIPAL
    ========================================== */
 
 .main-banner {
@@ -217,10 +216,6 @@ body.events-open {
     gap: clamp(18px, 2.2vw, 35px);
 }
 
-/* ==========================================
-   CARDURI SERVICII
-   ========================================== */
-
 .service-box {
     width: 100%;
     min-width: 0;
@@ -236,7 +231,6 @@ body.events-open {
     text-align: center;
 
     background: #1c2427;
-
     border: 1px solid #a58d55;
 
     overflow: hidden;
@@ -265,9 +259,7 @@ body.events-open {
 
     color: #d6c39b;
 
-    font-family: Georgia, serif;
     font-size: clamp(20px, 1.7vw, 27px);
-
     font-weight: normal;
     line-height: 1.25;
 }
@@ -279,9 +271,6 @@ body.events-open {
 
     width: 100%;
     height: clamp(145px, 21vh, 230px);
-
-    min-height: 0;
-    max-height: none;
 
     flex: 0 0 auto;
 
@@ -315,16 +304,9 @@ body.events-open {
 
     color: #e5dfd2;
 
-    font-family: Georgia, serif;
     font-size: clamp(13px, 1vw, 16px);
-
     line-height: 1.55;
-    font-weight: normal;
 }
-
-/* ==========================================
-   BUTOANE SERVICII
-   ========================================== */
 
 .service-button {
     order: 5;
@@ -343,11 +325,7 @@ body.events-open {
     min-width: 185px;
     flex-shrink: 0;
 
-    background: linear-gradient(
-        135deg,
-        #d8bd7a,
-        #b29450
-    );
+    background: linear-gradient(135deg, #d8bd7a, #b29450);
 
     border: 1px solid #e2ca91;
     border-radius: 3px;
@@ -359,40 +337,22 @@ body.events-open {
     font-weight: bold;
 
     text-decoration: none;
-    letter-spacing: 0.3px;
-
     cursor: pointer;
 
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.22);
 
-    transition:
-        background 0.3s ease,
-        color 0.3s ease,
-        border-color 0.3s ease,
-        transform 0.3s ease,
-        box-shadow 0.3s ease;
+    transition: 0.3s ease;
 }
 
 .service-button span {
     font-size: 19px;
     line-height: 1;
-
     transition: transform 0.3s ease;
 }
 
 .service-button:hover {
-    background: linear-gradient(
-        135deg,
-        #ead49c,
-        #c5a45e
-    );
-
-    color: #111619;
-    border-color: #f0dca9;
-
+    background: linear-gradient(135deg, #ead49c, #c5a45e);
     transform: translateY(-3px);
-
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
 }
 
 .service-button:hover span {
@@ -402,10 +362,6 @@ body.events-open {
 .service-button:focus-visible {
     outline: 2px solid #ead49c;
     outline-offset: 4px;
-}
-
-.service-button:active {
-    transform: translateY(-1px);
 }
 
 /* ==========================================
@@ -478,7 +434,6 @@ body.events-open {
     min-width: 15px;
 
     fill: none;
-
     stroke: #c1a365;
     stroke-width: 1.8;
 
@@ -496,8 +451,6 @@ body.events-open {
 .contact-item:hover span {
     color: #d9bd7c;
 }
-
-/* POZITIONARE FOOTER */
 
 .email {
     grid-column: 1;
@@ -528,10 +481,804 @@ body.events-open {
 }
 
 /* ==========================================
-   LAPTOPURI CU INALTIME REDUSA
+   POPUP GENERAL
    ========================================== */
 
-@media (min-width: 769px) and (max-height: 750px) {
+.events-overlay {
+    position: fixed;
+    inset: 0;
+
+    z-index: 9999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 22px;
+
+    background: rgba(5, 9, 11, 0.90);
+
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transition:
+        opacity 0.3s ease,
+        visibility 0.3s ease;
+}
+
+.events-overlay.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.events-modal {
+    position: relative;
+
+    width: 100%;
+    max-width: 1350px;
+
+    max-height: 92vh;
+    max-height: 92svh;
+
+    padding: 42px 42px 35px;
+
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    background: #171d20;
+
+    border: 1px solid #a88b4e;
+
+    box-shadow: 0 20px 70px rgba(0, 0, 0, 0.55);
+
+    transform: translateY(20px) scale(0.98);
+
+    transition: transform 0.35s ease;
+}
+
+.events-overlay.active .events-modal {
+    transform: translateY(0) scale(1);
+}
+
+/* SCROLLBAR POPUP */
+
+.events-modal {
+    scrollbar-width: thin;
+    scrollbar-color: #9e824d #171d20;
+}
+
+.events-modal::-webkit-scrollbar {
+    width: 7px;
+}
+
+.events-modal::-webkit-scrollbar-track {
+    background: #171d20;
+}
+
+.events-modal::-webkit-scrollbar-thumb {
+    background: #9e824d;
+    border-radius: 10px;
+}
+
+/* BUTON ÎNCHIDERE */
+
+.events-close {
+    position: absolute;
+
+    top: 14px;
+    right: 18px;
+
+    z-index: 20;
+
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: transparent;
+
+    border: 1px solid rgba(193, 163, 101, 0.4);
+    border-radius: 50%;
+
+    color: #d1b36d;
+
+    font-size: 29px;
+    line-height: 1;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+.events-close:hover {
+    background: #b79b5c;
+    color: #171d20;
+    transform: rotate(90deg);
+}
+
+/* ==========================================
+   ECRANE POPUP
+   ========================================== */
+
+.popup-view[hidden] {
+    display: none !important;
+}
+
+.popup-view {
+    animation: viewAppear 0.35s ease both;
+}
+
+@keyframes viewAppear {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==========================================
+   TITLURI POPUP
+   ========================================== */
+
+.events-heading,
+.packages-heading {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.events-eyebrow {
+    display: block;
+
+    margin-bottom: 10px;
+
+    color: #b79b5c;
+
+    font-size: 11px;
+    letter-spacing: 4px;
+}
+
+.events-heading h2,
+.packages-heading h2 {
+    color: #e5dfd2;
+
+    font-size: clamp(27px, 3vw, 38px);
+    font-weight: normal;
+    line-height: 1.3;
+}
+
+.events-heading-line {
+    width: 65px;
+    height: 1px;
+
+    margin: 15px auto;
+
+    background: #b79b5c;
+}
+
+.events-heading p,
+.packages-heading > p {
+    color: #bdb5a5;
+
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* ==========================================
+   CARDURI EVENIMENTE
+   ========================================== */
+
+.events-cards {
+    display: grid;
+
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+
+    gap: 19px;
+
+    width: 100%;
+}
+
+.event-card {
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    background: #20292c;
+
+    border: 1px solid rgba(183, 155, 92, 0.4);
+
+    overflow: hidden;
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.event-card:hover {
+    transform: translateY(-6px);
+    border-color: #d1b36d;
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+}
+
+.event-image {
+    position: relative;
+
+    width: 100%;
+    aspect-ratio: 4 / 3;
+
+    overflow: hidden;
+
+    background: #111619;
+}
+
+.event-image img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition: transform 0.5s ease;
+}
+
+.event-card:hover .event-image img {
+    transform: scale(1.06);
+}
+
+.event-number {
+    position: absolute;
+
+    top: 12px;
+    left: 12px;
+
+    padding: 6px 10px;
+
+    color: #e5dfd2;
+
+    background: rgba(17, 22, 25, 0.8);
+
+    border: 1px solid rgba(183, 155, 92, 0.6);
+
+    font-size: 11px;
+    letter-spacing: 1px;
+}
+
+.event-info {
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    padding: 20px 17px 19px;
+}
+
+.event-category {
+    color: #b79b5c;
+
+    font-size: 9px;
+    letter-spacing: 1.7px;
+
+    margin-bottom: 9px;
+}
+
+.event-info h3 {
+    color: #e5dfd2;
+
+    font-size: 23px;
+    font-weight: normal;
+
+    margin-bottom: 10px;
+}
+
+.event-info p {
+    color: #c9c1b2;
+
+    font-size: 13px;
+    line-height: 1.6;
+
+    margin-bottom: 20px;
+}
+
+/* BUTON VEZI PACHETE */
+
+.event-link {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 10px;
+
+    margin-top: auto;
+
+    padding: 0 0 5px;
+
+    color: #d1b36d;
+
+    font-family: Georgia, serif;
+    font-size: 13px;
+
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(183, 155, 92, 0.4);
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+.event-link span {
+    font-size: 18px;
+    transition: transform 0.3s ease;
+}
+
+.event-link:hover {
+    color: #f0dca9;
+}
+
+.event-link:hover span {
+    transform: translateX(5px);
+}
+
+/* ==========================================
+   BUTON ÎNAPOI
+   ========================================== */
+
+.packages-heading {
+    position: relative;
+    padding-top: 8px;
+}
+
+.back-button {
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    display: inline-flex;
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 9px 13px;
+
+    background: #20292c;
+
+    border: 1px solid rgba(183, 155, 92, 0.45);
+
+    color: #d1b36d;
+
+    font-family: Georgia, serif;
+    font-size: 12px;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+.back-button span {
+    font-size: 18px;
+    transition: transform 0.3s ease;
+}
+
+.back-button:hover {
+    background: #293437;
+    border-color: #d1b36d;
+}
+
+.back-button:hover span {
+    transform: translateX(-4px);
+}
+
+.packages-heading h2 span {
+    color: #d1b36d;
+}
+
+/* ==========================================
+   PACHETE - GRID
+   ========================================== */
+
+.packages-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    align-items: stretch;
+
+    gap: 20px;
+
+    width: 100%;
+}
+
+/* CARD PACHET */
+
+.package-card {
+    position: relative;
+
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 28px 23px 23px;
+
+    background: linear-gradient(
+        160deg,
+        #222c2f,
+        #1b2326
+    );
+
+    border: 1px solid rgba(183, 155, 92, 0.38);
+
+    overflow: hidden;
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.package-card:hover {
+    transform: translateY(-5px);
+
+    border-color: #b79b5c;
+
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.28);
+}
+
+/* ELEMENTE COMUNE */
+
+.package-top {
+    text-align: center;
+}
+
+.package-label {
+    display: block;
+
+    color: #b79b5c;
+
+    font-size: 10px;
+    letter-spacing: 3px;
+
+    margin-bottom: 9px;
+}
+
+.package-top h3 {
+    color: #e2d6ba;
+
+    font-size: 33px;
+    font-weight: normal;
+    letter-spacing: 1px;
+}
+
+.package-description {
+    min-height: 40px;
+
+    margin-top: 8px;
+
+    color: #aaa99e;
+
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.package-divider {
+    width: 55px;
+    height: 1px;
+
+    margin: 20px auto 22px;
+
+    background: #b79b5c;
+}
+
+/* LISTA SERVICII */
+
+.package-features {
+    list-style: none;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 14px;
+
+    flex: 1;
+
+    padding: 0;
+    margin: 0 0 25px;
+}
+
+.package-features li {
+    position: relative;
+
+    padding-left: 22px;
+
+    color: #ded8cb;
+
+    font-size: 13px;
+    line-height: 1.55;
+}
+
+.package-features li::before {
+    content: "✓";
+
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    color: #c5a45e;
+
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* PREDARE */
+
+.package-delivery {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    padding: 12px 8px;
+
+    margin-top: auto;
+    margin-bottom: 17px;
+
+    background: rgba(183, 155, 92, 0.09);
+
+    border: 1px solid rgba(183, 155, 92, 0.25);
+
+    color: #d7c59c;
+
+    font-size: 11px;
+    text-align: center;
+}
+
+.delivery-icon {
+    color: #d1b36d;
+    font-size: 15px;
+}
+
+/* BUTON PACHET */
+
+.package-button {
+    width: 100%;
+
+    min-height: 47px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 12px;
+
+    padding: 12px 15px;
+
+    background: linear-gradient(
+        135deg,
+        #d8bd7a,
+        #b29450
+    );
+
+    border: 1px solid #e2ca91;
+    border-radius: 3px;
+
+    color: #171d20;
+
+    font-family: Georgia, serif;
+    font-size: 13px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+.package-button span {
+    font-size: 19px;
+    transition: transform 0.3s ease;
+}
+
+.package-button:hover {
+    background: linear-gradient(
+        135deg,
+        #ead49c,
+        #c5a45e
+    );
+
+    transform: translateY(-2px);
+
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
+}
+
+.package-button:hover span {
+    transform: translateX(5px);
+}
+
+.package-button:focus-visible {
+    outline: 2px solid #ead49c;
+    outline-offset: 4px;
+}
+
+/* ==========================================
+   SILVER
+   ========================================== */
+
+.package-card.silver {
+    border-color: rgba(183, 155, 92, 0.28);
+}
+
+.silver .package-top h3 {
+    color: #d5d8d5;
+}
+
+.silver .package-divider {
+    background: #9da8a6;
+}
+
+.silver .package-features li::before {
+    color: #b8c2bd;
+}
+
+/* ==========================================
+   GOLD - RECOMANDAT
+   ========================================== */
+
+.package-card.gold {
+    border-color: #b79b5c;
+
+    background: linear-gradient(
+        155deg,
+        #2b302b,
+        #202725 55%,
+        #1b2326
+    );
+
+    box-shadow: 0 8px 28px rgba(183, 155, 92, 0.10);
+}
+
+.gold .package-top h3 {
+    color: #d9bd7c;
+    font-size: 37px;
+}
+
+.gold .package-divider {
+    width: 75px;
+    height: 2px;
+    background: #c5a45e;
+}
+
+.popular-label {
+    position: absolute;
+
+    top: 0;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 100%;
+
+    padding: 7px 5px;
+
+    background: linear-gradient(
+        90deg,
+        #a88b4e,
+        #d8bd7a,
+        #a88b4e
+    );
+
+    color: #171d20;
+
+    text-align: center;
+
+    font-size: 9px;
+    font-weight: bold;
+    letter-spacing: 1.8px;
+}
+
+.package-card.gold {
+    padding-top: 49px;
+}
+
+.gold .package-top h3 {
+    text-shadow: 0 2px 12px rgba(197, 164, 94, 0.12);
+}
+
+/* ==========================================
+   PLATINUM
+   ========================================== */
+
+.package-card.platinum {
+    border-color: rgba(209, 179, 109, 0.65);
+
+    background: linear-gradient(
+        155deg,
+        #293236,
+        #20292c 55%,
+        #171d20
+    );
+}
+
+.platinum .package-top h3 {
+    color: #f0dfb4;
+    font-size: 35px;
+}
+
+.platinum .package-divider {
+    width: 75px;
+    height: 2px;
+    background: linear-gradient(
+        90deg,
+        #b79b5c,
+        #f0dca9
+    );
+}
+
+.platinum .package-features li::before {
+    color: #e1c47e;
+}
+
+/* ==========================================
+   FOOTER PACHETE
+   ========================================== */
+
+.packages-footer {
+    margin-top: 30px;
+
+    padding-top: 20px;
+
+    border-top: 1px solid rgba(183, 155, 92, 0.25);
+
+    text-align: center;
+}
+
+.footer-ornament {
+    display: block;
+
+    margin-bottom: 9px;
+
+    color: #b79b5c;
+
+    font-size: 18px;
+}
+
+.packages-footer p {
+    color: #bdb5a5;
+
+    font-size: 13px;
+    font-style: italic;
+    line-height: 1.6;
+}
+
+/* ==========================================
+   FOCUS
+   ========================================== */
+
+button:focus-visible,
+a:focus-visible {
+    outline: 2px solid #e2ca91;
+    outline-offset: 4px;
+}
+
+/* ==========================================
+   LAPTOPURI CU ÎNĂLȚIME REDUSĂ
+   ========================================== */
+
+@media (min-width: 951px) and (max-height: 750px) {
 
     .site-shell {
         grid-template-rows:
@@ -578,326 +1325,6 @@ body.events-open {
         font-size: 11px;
         gap: 8px;
     }
-
-    .contact-item svg {
-        width: 16px;
-        height: 16px;
-        min-width: 16px;
-    }
-}
-
-/* ==========================================
-   POPUP EVENIMENTE
-   ========================================== */
-
-.events-overlay {
-    position: fixed;
-    inset: 0;
-
-    z-index: 9999;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    padding: 25px;
-
-    background: rgba(5, 9, 11, 0.88);
-
-    backdrop-filter: blur(7px);
-    -webkit-backdrop-filter: blur(7px);
-
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-
-    transition:
-        opacity 0.3s ease,
-        visibility 0.3s ease;
-}
-
-.events-overlay.active {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-}
-
-/* FEREASTRA POPUP */
-
-.events-modal {
-    position: relative;
-
-    width: 100%;
-    max-width: 1250px;
-
-    max-height: 90vh;
-    max-height: 90svh;
-
-    padding: 38px 42px;
-
-    overflow-x: hidden;
-    overflow-y: auto;
-
-    background: #171d20;
-
-    border: 1px solid #a88b4e;
-
-    box-shadow: 0 20px 70px rgba(0, 0, 0, 0.55);
-
-    transform: translateY(20px) scale(0.98);
-
-    transition: transform 0.35s ease;
-}
-
-.events-overlay.active .events-modal {
-    transform: translateY(0) scale(1);
-}
-
-/* BUTON INCHIDERE */
-
-.events-close {
-    position: absolute;
-
-    top: 14px;
-    right: 20px;
-
-    z-index: 5;
-
-    width: 38px;
-    height: 38px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    background: transparent;
-
-    border: 1px solid rgba(193, 163, 101, 0.4);
-    border-radius: 50%;
-
-    color: #d1b36d;
-
-    font-size: 29px;
-    line-height: 1;
-
-    cursor: pointer;
-
-    transition: 0.3s ease;
-}
-
-.events-close:hover {
-    background: #b79b5c;
-    color: #171d20;
-
-    transform: rotate(90deg);
-}
-
-/* TITLU POPUP */
-
-.events-heading {
-    text-align: center;
-    margin-bottom: 32px;
-}
-
-.events-eyebrow {
-    display: block;
-
-    margin-bottom: 10px;
-
-    color: #b79b5c;
-
-    font-size: 11px;
-    letter-spacing: 4px;
-}
-
-.events-heading h2 {
-    color: #e5dfd2;
-
-    font-size: clamp(25px, 3vw, 36px);
-    font-weight: normal;
-}
-
-.events-heading-line {
-    width: 65px;
-    height: 1px;
-
-    margin: 15px auto;
-
-    background: #b79b5c;
-}
-
-.events-heading p {
-    color: #bdb5a5;
-
-    font-size: 14px;
-    line-height: 1.5;
-}
-
-/* GRID CARDURI DESKTOP */
-
-.events-cards {
-    display: grid;
-
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-
-    gap: 19px;
-
-    width: 100%;
-}
-
-/* CARD EVENIMENT */
-
-.event-card {
-    min-width: 0;
-
-    display: flex;
-    flex-direction: column;
-
-    background: #20292c;
-
-    border: 1px solid rgba(183, 155, 92, 0.4);
-
-    overflow: hidden;
-
-    transition:
-        transform 0.3s ease,
-        border-color 0.3s ease,
-        box-shadow 0.3s ease;
-}
-
-.event-card:hover {
-    transform: translateY(-6px);
-
-    border-color: #d1b36d;
-
-    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
-}
-
-/* IMAGINE CARD */
-
-.event-image {
-    position: relative;
-
-    width: 100%;
-    aspect-ratio: 4 / 3;
-
-    overflow: hidden;
-
-    background: #111619;
-}
-
-.event-image img {
-    display: block;
-
-    width: 100%;
-    height: 100%;
-
-    object-fit: cover;
-
-    transition: transform 0.5s ease;
-}
-
-.event-card:hover .event-image img {
-    transform: scale(1.06);
-}
-
-.event-number {
-    position: absolute;
-
-    top: 12px;
-    left: 12px;
-
-    padding: 6px 10px;
-
-    color: #e5dfd2;
-
-    background: rgba(17, 22, 25, 0.8);
-
-    border: 1px solid rgba(183, 155, 92, 0.6);
-
-    font-size: 11px;
-    letter-spacing: 1px;
-}
-
-/* CONTINUT CARD */
-
-.event-info {
-    flex: 1;
-
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-
-    padding: 20px 17px 19px;
-}
-
-.event-category {
-    color: #b79b5c;
-
-    font-size: 9px;
-    letter-spacing: 1.7px;
-
-    margin-bottom: 9px;
-}
-
-.event-info h3 {
-    color: #e5dfd2;
-
-    font-size: 23px;
-    font-weight: normal;
-
-    margin-bottom: 10px;
-}
-
-.event-info p {
-    color: #c9c1b2;
-
-    font-size: 13px;
-    line-height: 1.6;
-
-    margin-bottom: 20px;
-}
-
-/* LINK CARD */
-
-.event-link {
-    display: inline-flex;
-    align-items: center;
-
-    gap: 10px;
-
-    margin-top: auto;
-
-    color: #d1b36d;
-
-    font-size: 12px;
-    text-decoration: none;
-
-    border-bottom: 1px solid rgba(183, 155, 92, 0.4);
-
-    padding-bottom: 5px;
-
-    transition: 0.3s ease;
-}
-
-.event-link span {
-    font-size: 18px;
-
-    transition: transform 0.3s ease;
-}
-
-.event-link:hover {
-    color: #f0dca9;
-}
-
-.event-link:hover span {
-    transform: translateX(5px);
-}
-
-/* INDICATORI CAROUSEL */
-
-.events-dots {
-    display: none;
 }
 
 /* ==========================================
@@ -964,25 +1391,6 @@ body.events-open {
         object-fit: cover;
     }
 
-    .service-button {
-        min-width: 195px;
-        padding: 12px 22px;
-        font-size: 14px;
-    }
-
-    /* POPUP TABLETA */
-
-    .events-modal {
-        padding: 35px 25px;
-    }
-
-    .events-cards {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 16px;
-    }
-
-    /* FOOTER TABLETA */
-
     .footer {
         padding: 24px 6%;
 
@@ -1031,6 +1439,47 @@ body.events-open {
         font-size: 12px;
         gap: 8px;
     }
+
+    /* POPUP TABLETĂ */
+
+    .events-modal {
+        padding: 40px 25px 30px;
+    }
+
+    .events-cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+    }
+
+    .packages-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+    }
+
+    .package-card.platinum {
+        grid-column: 1 / -1;
+    }
+
+    .package-card {
+        padding-left: 19px;
+        padding-right: 19px;
+    }
+
+    .package-card.gold {
+        padding-top: 49px;
+    }
+
+    .back-button {
+        position: relative;
+        margin: 0 auto 20px;
+    }
+
+    .packages-heading {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
 }
 
 /* ==========================================
@@ -1096,10 +1545,8 @@ body.events-open {
 
     .main-image {
         width: 100%;
-
         height: auto;
         min-height: 0;
-
         aspect-ratio: 4 / 3;
     }
 
@@ -1107,7 +1554,6 @@ body.events-open {
         width: 100%;
         height: 100%;
         max-width: 100%;
-
         object-fit: contain;
     }
 
@@ -1128,7 +1574,6 @@ body.events-open {
     .services {
         width: 100%;
         height: auto;
-
         padding: 24px 5%;
     }
 
@@ -1139,7 +1584,6 @@ body.events-open {
         margin: 0 auto;
 
         grid-template-columns: minmax(0, 1fr);
-
         gap: 22px;
     }
 
@@ -1147,24 +1591,19 @@ body.events-open {
         width: 100%;
         min-height: 0;
         height: auto;
-
         padding: 13px;
     }
 
     .service-box h2 {
         min-height: 55px;
-
         padding: 8px 5px 12px;
-
         font-size: 23px;
     }
 
     .service-box img {
         width: 100%;
         height: auto;
-
         aspect-ratio: 4 / 3;
-
         object-fit: cover;
     }
 
@@ -1175,16 +1614,13 @@ body.events-open {
 
     .service-box p {
         padding: 0 7px 9px;
-
         font-size: 15px;
         line-height: 1.55;
     }
 
     .service-button {
         min-width: 195px;
-
         padding: 12px 22px;
-
         font-size: 14px;
     }
 
@@ -1230,11 +1666,8 @@ body.events-open {
 
     .contact-item {
         width: 100%;
-
         justify-content: center;
-
         gap: 10px;
-
         font-size: 13px;
         line-height: 1.5;
     }
@@ -1247,42 +1680,57 @@ body.events-open {
 
     .address {
         padding-top: 17px;
-
         border-top: 1px solid rgba(193, 163, 101, 0.3);
     }
 
     /* ======================================
-       POPUP TELEFON - CAROUSEL
+       POPUP TELEFON
        ====================================== */
 
     .events-overlay {
-        padding: 12px;
+        padding: 10px;
+        align-items: center;
     }
 
     .events-modal {
         width: 100%;
         max-width: 440px;
 
-        max-height: 88vh;
-        max-height: 88svh;
+        max-height: 92vh;
+        max-height: 92svh;
 
-        padding: 30px 0 20px;
+        padding: 32px 0 24px;
 
         overflow-x: hidden;
         overflow-y: auto;
+
+        overscroll-behavior: contain;
     }
 
     .events-close {
-        top: 10px;
-        right: 12px;
+        top: 9px;
+        right: 11px;
 
         width: 34px;
         height: 34px;
     }
 
+    /* TITLURI */
+
     .events-heading {
-        padding: 0 18px;
+        padding: 0 20px;
         margin-bottom: 22px;
+    }
+
+    .events-heading h2,
+    .packages-heading h2 {
+        font-size: 26px;
+    }
+
+    .events-heading p,
+    .packages-heading > p {
+        font-size: 12px;
+        line-height: 1.6;
     }
 
     .events-eyebrow {
@@ -1290,15 +1738,7 @@ body.events-open {
         letter-spacing: 3px;
     }
 
-    .events-heading h2 {
-        font-size: 26px;
-    }
-
-    .events-heading p {
-        font-size: 12px;
-    }
-
-    /* O SINGURA OFERTA VIZIBILA */
+    /* EVENIMENTE - CAROUSEL */
 
     .events-cards {
         display: flex;
@@ -1316,7 +1756,6 @@ body.events-open {
         scroll-behavior: smooth;
 
         -webkit-overflow-scrolling: touch;
-
         scrollbar-width: none;
     }
 
@@ -1338,10 +1777,6 @@ body.events-open {
         transform: none;
     }
 
-    .event-image {
-        aspect-ratio: 4 / 3;
-    }
-
     .event-info {
         padding: 18px 17px 20px;
     }
@@ -1354,41 +1789,112 @@ body.events-open {
         font-size: 13px;
     }
 
-    /* PUNCTE CAROUSEL */
+    /* PACHETE TELEFON */
 
-    .events-dots {
+    .packages-heading {
         display: flex;
-
+        flex-direction: column;
         align-items: center;
-        justify-content: center;
 
-        gap: 9px;
-
-        padding-top: 12px;
+        padding: 0 17px;
+        margin-bottom: 24px;
     }
 
-    .events-dots button {
-        width: 7px;
-        height: 7px;
+    .back-button {
+        position: relative;
 
-        padding: 0;
+        align-self: flex-start;
 
-        border: none;
-        border-radius: 50%;
+        margin-bottom: 23px;
 
-        background: #657074;
-
-        cursor: pointer;
-
-        transition: 0.3s ease;
+        font-size: 11px;
+        padding: 9px 11px;
     }
 
-    .events-dots button.active {
-        width: 23px;
+    .packages-grid {
+        display: flex;
+        flex-direction: column;
 
-        border-radius: 10px;
+        width: 100%;
 
-        background: #c5a45e;
+        padding: 0 13px;
+
+        gap: 20px;
+    }
+
+    .package-card {
+        width: 100%;
+
+        padding: 25px 19px 20px;
+
+        transform: none;
+    }
+
+    .package-card:hover {
+        transform: none;
+    }
+
+    .package-card.gold {
+        padding-top: 49px;
+    }
+
+    .package-card.platinum {
+        padding-top: 25px;
+    }
+
+    .package-top h3 {
+        font-size: 31px;
+    }
+
+    .gold .package-top h3 {
+        font-size: 35px;
+    }
+
+    .platinum .package-top h3 {
+        font-size: 33px;
+    }
+
+    .package-description {
+        min-height: 0;
+        font-size: 12px;
+    }
+
+    .package-divider {
+        margin: 17px auto 20px;
+    }
+
+    .package-features {
+        gap: 13px;
+        margin-bottom: 22px;
+    }
+
+    .package-features li {
+        font-size: 13px;
+        line-height: 1.55;
+    }
+
+    .package-delivery {
+        font-size: 11px;
+        padding: 11px 7px;
+    }
+
+    .package-button {
+        min-height: 48px;
+        font-size: 13px;
+    }
+
+    .popular-label {
+        font-size: 9px;
+        padding: 7px 4px;
+    }
+
+    .packages-footer {
+        margin: 25px 15px 0;
+        padding: 18px 10px 0;
+    }
+
+    .packages-footer p {
+        font-size: 12px;
     }
 
 }
@@ -1436,7 +1942,8 @@ body.events-open {
         font-size: 11px;
     }
 
-    .events-heading h2 {
+    .events-heading h2,
+    .packages-heading h2 {
         font-size: 23px;
     }
 
@@ -1445,28 +1952,352 @@ body.events-open {
         min-width: 88%;
     }
 
+    .package-card {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
 }
 
 /* ==========================================
-   ACCESIBILITATE
+   LAPTOPURI FOARTE LATE
    ========================================== */
 
-.events-close:focus-visible,
-.event-link:focus-visible,
-.events-dots button:focus-visible {
-    outline: 2px solid #e2ca91;
-    outline-offset: 4px;
+@media (min-width: 1400px) {
+
+    .events-modal {
+        max-width: 1450px;
+    }
+
+    .packages-grid {
+        gap: 25px;
+    }
+
+    .package-card {
+        padding-left: 28px;
+        padding-right: 28px;
+    }
+
 }
+
+/* ==========================================
+   REDUCERE ANIMATII
+   ========================================== */
 
 @media (prefers-reduced-motion: reduce) {
 
-    .events-overlay,
-    .events-modal,
-    .event-card,
-    .event-image img,
-    .service-box,
-    .service-button {
-        transition: none;
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+
+}
+
+
+/* ==========================================
+   POPUP LAPTOP - AJUSTARE FINALA
+   ========================================== */
+
+@media (min-width: 951px) {
+
+    /* POPUP EVENIMENTE
+       Dimensiune compacta, fara inaltime fortata */
+
+    .events-modal {
+        width: 94%;
+        max-width: 1350px;
+
+        height: auto;
+        max-height: 90vh;
+        max-height: 90svh;
+
+        padding: 42px 35px 32px;
+
+        display: block;
+
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+
+    /* Titlul evenimentelor */
+
+    .events-heading {
+        margin-bottom: 25px;
+    }
+
+    .events-heading h2 {
+        font-size: 30px;
+    }
+
+    /* ======================================
+       POPUP PACHETE
+       Se aplica doar cand sunt afisate
+       Silver, Gold si Platinum
+       ====================================== */
+
+    .events-modal:has(#packagesView:not([hidden])) {
+        width: 96%;
+        max-width: 1450px;
+
+        height: 90vh;
+        max-height: 850px;
+
+        padding: 65px 30px 20px;
+
+        display: flex;
+        flex-direction: column;
+
+        overflow: hidden;
+    }
+
+    /* Zona principala a pachetelor */
+
+    #packagesView {
+        flex: 1;
+        min-height: 0;
+        width: 100%;
+
+        display: flex;
+        flex-direction: column;
+    }
+
+    #packagesView[hidden] {
+        display: none !important;
+    }
+
+    /* Titlu si buton inapoi */
+
+    .packages-heading {
+        position: relative;
+
+        flex-shrink: 0;
+
+        padding-top: 0;
+        margin-bottom: 16px;
+    }
+
+    .packages-heading h2 {
+        font-size: 29px;
+        line-height: 1.2;
+    }
+
+    .packages-heading > p {
+        font-size: 12px;
+        margin-top: 5px;
+    }
+
+    .back-button {
+        top: -48px;
+        left: 0;
+
+        padding: 8px 12px;
+
+        font-size: 12px;
+    }
+
+    /* Buton inchidere */
+
+    .events-close {
+        top: 14px;
+        right: 18px;
+
+        width: 38px;
+        height: 38px;
+    }
+
+    /* Grid real din HTML-ul tau */
+
+    .packages-grid {
+        flex: 1;
+        min-height: 0;
+
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+
+        align-items: stretch;
+        gap: 17px;
+
+        width: 100%;
+    }
+
+    /* Carduri */
+
+    .package-card {
+        min-width: 0;
+        min-height: 0;
+        height: 100%;
+
+        padding: 16px 16px 14px;
+
+        display: flex;
+        flex-direction: column;
+
+        overflow: hidden;
+    }
+
+    .package-card.gold {
+        padding-top: 43px;
+    }
+
+    .package-top h3 {
+        font-size: 25px;
+    }
+
+    .gold .package-top h3 {
+        font-size: 28px;
+    }
+
+    .platinum .package-top h3 {
+        font-size: 27px;
+    }
+
+    .package-label {
+        font-size: 9px;
+        margin-bottom: 5px;
+    }
+
+    .package-description {
+        min-height: 0;
+        margin-top: 5px;
+        font-size: 11px;
+        line-height: 1.3;
+    }
+
+    .package-divider {
+        margin: 10px auto 12px;
+    }
+
+    .gold .package-divider,
+    .platinum .package-divider {
+        margin: 10px auto 12px;
+    }
+
+    /* Lista de servicii */
+
+    .package-features {
+        flex: 1;
+        min-height: 0;
+
+        justify-content: space-evenly;
+
+        gap: 4px;
+
+        margin: 0 0 10px;
+    }
+
+    .package-features li {
+        padding-left: 17px;
+
+        font-size: 11px;
+        line-height: 1.3;
+    }
+
+    .package-features li::before {
+        font-size: 12px;
+    }
+
+    /* Predarea materialelor */
+
+    .package-delivery {
+        flex-shrink: 0;
+
+        padding: 8px 6px;
+        margin-bottom: 10px;
+
+        font-size: 10px;
+        line-height: 1.3;
+    }
+
+    /* Butoane */
+
+    .package-button {
+        flex-shrink: 0;
+
+        min-height: 40px;
+
+        padding: 9px 10px;
+
+        margin-top: 0;
+
+        font-size: 11px;
+    }
+
+    /* Footer pachete */
+
+    .packages-footer {
+        flex-shrink: 0;
+
+        margin-top: 12px;
+        padding-top: 8px;
+    }
+
+    .footer-ornament {
+        margin-bottom: 3px;
+        font-size: 14px;
+    }
+
+    .packages-footer p {
+        font-size: 11px;
+        line-height: 1.3;
+    }
+
+}
+
+/* ==========================================
+   LAPTOPURI CU INALTIME MAI MICA
+   ========================================== */
+
+@media (min-width: 951px) and (max-height: 800px) {
+
+    .events-modal:has(#packagesView:not([hidden])) {
+        height: 94vh;
+        max-height: 94vh;
+
+        padding: 58px 24px 12px;
+    }
+
+    .packages-heading {
+        margin-bottom: 10px;
+    }
+
+    .packages-heading h2 {
+        font-size: 25px;
+    }
+
+    .packages-grid {
+        gap: 13px;
+    }
+
+    .package-card {
+        padding: 12px 12px 10px;
+    }
+
+    .package-card.gold {
+        padding-top: 39px;
+    }
+
+    .package-features {
+        gap: 3px;
+    }
+
+    .package-features li {
+        font-size: 10px;
+        line-height: 1.22;
+    }
+
+    .package-delivery {
+        padding: 6px;
+        margin-bottom: 7px;
+        font-size: 9px;
+    }
+
+    .package-button {
+        min-height: 36px;
+        padding: 7px;
+        font-size: 10px;
     }
 
 }
