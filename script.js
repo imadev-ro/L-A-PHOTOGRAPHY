@@ -1,28 +1,52 @@
 
 document.addEventListener("DOMContentLoaded", () => {
 
+    // ======================================
+    // ELEMENTE
+    // ======================================
+
     const popup = document.getElementById("eventsPopup");
+
     const openButton = document.getElementById("openEvents");
     const closeButton = document.getElementById("closeEvents");
 
-    const cardsContainer = document.getElementById("eventsCards");
-    const dotsContainer = document.getElementById("eventsDots");
+    const eventsView = document.getElementById("eventsView");
+    const packagesView = document.getElementById("packagesView");
+
+    const backButton = document.getElementById("backToEvents");
+
+    const selectedEvent = document.getElementById("selectedEvent");
+
+    const modal = popup?.querySelector(".events-modal");
 
     if (
         !popup ||
         !openButton ||
         !closeButton ||
-        !cardsContainer ||
-        !dotsContainer
+        !eventsView ||
+        !packagesView ||
+        !backButton ||
+        !selectedEvent ||
+        !modal
     ) {
         return;
     }
 
-    const cards = [...cardsContainer.querySelectorAll(".event-card")];
-    const dots = [...dotsContainer.querySelectorAll("button")];
+
+    // ======================================
+    // CONFIGURARE WHATSAPP
+    // ======================================
+
+    const photographerPhone = "40730548517";
+
+
+    // ======================================
+    // VARIABILE
+    // ======================================
+
+    let currentEvent = "";
 
     let previousFocus = null;
-    let scrollTimeout = null;
 
 
     // ======================================
@@ -33,6 +57,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
         previousFocus = document.activeElement;
 
+        currentEvent = "";
+
+        showEvents();
+
         popup.classList.add("active");
 
         popup.setAttribute("aria-hidden", "false");
@@ -41,13 +69,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
         closeButton.focus();
 
-        updateDots();
+        modal.scrollTop = 0;
 
     }
 
 
     // ======================================
-    // INCHIDERE POPUP
+    // ÎNCHIDERE POPUP
     // ======================================
 
     function closePopup() {
@@ -58,7 +86,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         document.body.classList.remove("events-open");
 
-        if (previousFocus) {
+        showEvents();
+
+        if (previousFocus && previousFocus.isConnected) {
             previousFocus.focus();
         }
 
@@ -66,16 +96,63 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     // ======================================
-    // BUTOANE DESCHIDERE / INCHIDERE
+    // AFIȘARE EVENIMENTE
+    // ======================================
+
+    function showEvents() {
+
+        eventsView.hidden = false;
+        packagesView.hidden = true;
+
+        eventsView.classList.add("active");
+        packagesView.classList.remove("active");
+
+        modal.scrollTop = 0;
+
+    }
+
+
+    // ======================================
+    // AFIȘARE PACHETE
+    // ======================================
+
+    function showPackages(eventName) {
+
+        currentEvent = eventName;
+
+        selectedEvent.textContent = eventName;
+
+        eventsView.hidden = true;
+        packagesView.hidden = false;
+
+        eventsView.classList.remove("active");
+        packagesView.classList.add("active");
+
+        modal.scrollTop = 0;
+
+        // Mutăm focusul pe butonul de întoarcere.
+
+        backButton.focus();
+
+    }
+
+
+    // ======================================
+    // BUTON DESCHIDERE
     // ======================================
 
     openButton.addEventListener("click", openPopup);
+
+
+    // ======================================
+    // BUTON ÎNCHIDERE
+    // ======================================
 
     closeButton.addEventListener("click", closePopup);
 
 
     // ======================================
-    // CLICK IN AFARA FERESTREI
+    // CLICK ÎN AFARA POPUP-ULUI
     // ======================================
 
     popup.addEventListener("click", (event) => {
@@ -88,7 +165,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     // ======================================
-    // INCHIDERE CU ESCAPE
+    // ÎNCHIDERE CU ESCAPE
     // ======================================
 
     document.addEventListener("keydown", (event) => {
@@ -97,159 +174,113 @@ document.addEventListener("DOMContentLoaded", () => {
             event.key === "Escape" &&
             popup.classList.contains("active")
         ) {
+
             closePopup();
+
         }
 
     });
 
 
     // ======================================
-    // ACTUALIZARE INDICATORI
+    // SELECTARE EVENIMENT
     // ======================================
 
-    function updateDots() {
+    const eventButtons = document.querySelectorAll(
+        ".event-link[data-event]"
+    );
 
-        if (window.innerWidth > 520) {
-            return;
-        }
+    eventButtons.forEach((button) => {
 
-        const containerRect =
-            cardsContainer.getBoundingClientRect();
+        button.addEventListener("click", () => {
 
-        const containerCenter =
-            containerRect.left + containerRect.width / 2;
+            const eventName = button.dataset.event;
 
-        let activeIndex = 0;
-        let smallestDistance = Infinity;
-
-        cards.forEach((card, index) => {
-
-            const cardRect = card.getBoundingClientRect();
-
-            const cardCenter =
-                cardRect.left + cardRect.width / 2;
-
-            const distance =
-                Math.abs(containerCenter - cardCenter);
-
-            if (distance < smallestDistance) {
-
-                smallestDistance = distance;
-
-                activeIndex = index;
-
-            }
-
-        });
-
-
-        dots.forEach((dot, index) => {
-
-            const isActive = index === activeIndex;
-
-            dot.classList.toggle("active", isActive);
-
-            dot.setAttribute(
-                "aria-current",
-                isActive ? "true" : "false"
-            );
-
-        });
-
-    }
-
-
-    // ======================================
-    // SWIPE / SCROLL ORIZONTAL
-    // ======================================
-
-    cardsContainer.addEventListener("scroll", () => {
-
-        clearTimeout(scrollTimeout);
-
-        scrollTimeout = setTimeout(() => {
-
-            updateDots();
-
-        }, 50);
-
-    }, { passive: true });
-
-
-    // ======================================
-    // CLICK PE INDICATORI
-    // ======================================
-
-    dots.forEach((dot, index) => {
-
-        dot.addEventListener("click", () => {
-
-            if (window.innerWidth > 520) {
+            if (!eventName) {
                 return;
             }
 
-            cards[index].scrollIntoView({
-
-                behavior: "smooth",
-
-                block: "nearest",
-
-                inline: "center"
-
-            });
+            showPackages(eventName);
 
         });
 
     });
 
 
-  
-// ======================================
-// WHATSAPP - OFERTE EVENIMENTE
-// ======================================
-
-const eventLinks = popup.querySelectorAll(".event-link");
-
-const photographerPhone = "40730548517";
-
-eventLinks.forEach((link) => {
-
-    const eventName = link.dataset.event;
-
-    const message =
-        `Bună ziua! Am văzut site-ul L&A Photography și sunt interesat(ă) de o ofertă pentru evenimentul: ${eventName}.
-
-Aș dori să primesc mai multe detalii despre pachetele disponibile și prețuri.
-
-Mulțumesc!`;
-
-    link.href =
-        `https://wa.me/${photographerPhone}?text=${encodeURIComponent(message)}`;
-
-    link.target = "_blank";
-    link.rel = "noopener noreferrer";
-
-    link.addEventListener("click", () => {
-        closePopup();
-    });
-
-});
-
-
-
     // ======================================
-    // REDIMENSIONARE FEREASTRA
+    // ÎNAPOI LA EVENIMENTE
     // ======================================
 
-    window.addEventListener("resize", () => {
+    backButton.addEventListener("click", () => {
 
-        updateDots();
+        showEvents();
+
+        const firstEventButton = eventsView.querySelector(
+            ".event-link"
+        );
+
+        if (firstEventButton) {
+            firstEventButton.focus();
+        }
 
     });
 
 
     // ======================================
-    // PROTECTIE FOCUS IN POPUP
+    // SOLICITARE OFERTĂ WHATSAPP
+    // ======================================
+
+    const packageButtons = document.querySelectorAll(
+        ".package-button[data-package]"
+    );
+
+    packageButtons.forEach((button) => {
+
+        button.addEventListener("click", () => {
+
+            const packageName = button.dataset.package;
+
+            if (!currentEvent || !packageName) {
+                return;
+            }
+
+            const message =
+                `Bună ziua! Am vizitat site-ul L&A Photography ` +
+                `și sunt interesat(ă) de o ofertă pentru evenimentul: ` +
+                `${currentEvent}, pachetul ${packageName}.\n\n` +
+
+                `Aș dori să primesc mai multe detalii despre serviciile ` +
+                `incluse și prețul acestui pachet.\n\n` +
+
+                `Mulțumesc!`;
+
+            const whatsappURL =
+                `https://wa.me/${photographerPhone}?text=` +
+                encodeURIComponent(message);
+
+
+            // Deschidem WhatsApp într-o filă nouă.
+
+            const whatsappWindow = window.open(
+                whatsappURL,
+                "_blank",
+                "noopener,noreferrer"
+            );
+
+
+            // Închidem popup-ul după solicitare.
+
+            if (whatsappWindow) {
+                closePopup();
+            }
+
+        });
+
+    });
+
+
+    // ======================================
+    // PROTECȚIE FOCUS ÎN POPUP
     // ======================================
 
     popup.addEventListener("keydown", (event) => {
@@ -258,11 +289,21 @@ Mulțumesc!`;
             return;
         }
 
+        const activeView = packagesView.hidden
+            ? eventsView
+            : packagesView;
+
         const focusableElements = [
-            ...popup.querySelectorAll(
+            closeButton,
+            ...activeView.querySelectorAll(
                 'button:not([disabled]), a[href], [tabindex]:not([tabindex="-1"])'
             )
-        ];
+        ].filter((element) => {
+
+            return !element.hidden &&
+                element.getClientRects().length > 0;
+
+        });
 
         if (focusableElements.length === 0) {
             return;
@@ -272,6 +313,7 @@ Mulțumesc!`;
 
         const lastElement =
             focusableElements[focusableElements.length - 1];
+
 
         if (
             event.shiftKey &&
