@@ -1,819 +1,298 @@
-
 <!DOCTYPE html>
 <html lang="ro">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <meta name="description" content="L&A Photography - Fotografie și videografie pentru evenimente, ședințe foto și albume.">
-
     <title>L&A Photography</title>
-
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
 <div class="site-shell">
 
-    <!-- HEADER -->
-
     <header class="header">
-
-        <a href="index.html" class="logo">
-            <svg class="logo-wreath" viewBox="0 0 100 100"
-                 xmlns="http://www.w3.org/2000/svg">
-
-                <g fill="none" stroke="#b79b5c"
-                   stroke-width="2" stroke-linecap="round">
-
+        <a href="index.html" class="logo" aria-label="L&A Photography - Acasă">
+            <svg class="logo-wreath" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <g fill="none" stroke="#b79b5c" stroke-width="2" stroke-linecap="round">
                     <path d="M25 78 C5 55 12 25 39 10"/>
                     <path d="M75 78 C95 55 88 25 61 10"/>
-
                     <path d="M20 68 Q8 63 9 54 Q19 56 20 68"/>
                     <path d="M15 55 Q4 48 9 39 Q17 43 15 55"/>
                     <path d="M16 42 Q8 32 16 25 Q23 34 16 42"/>
                     <path d="M24 30 Q19 19 29 15 Q34 25 24 30"/>
                     <path d="M33 19 Q32 9 43 8 Q44 17 33 19"/>
-
                     <path d="M80 68 Q92 63 91 54 Q81 56 80 68"/>
                     <path d="M85 55 Q96 48 91 39 Q83 43 85 55"/>
                     <path d="M84 42 Q92 32 84 25 Q77 34 84 42"/>
                     <path d="M76 30 Q81 19 71 15 Q66 25 76 30"/>
                     <path d="M67 19 Q68 9 57 8 Q56 17 67 19"/>
-
                     <path d="M25 78 Q50 94 75 78"/>
                 </g>
-
-                <text x="50" y="57"
-                      text-anchor="middle"
-                      fill="#d1b36d"
-                      font-family="Georgia"
-                      font-size="21">
-                    L&amp;A
-                </text>
+                <text x="50" y="57" text-anchor="middle" fill="#d1b36d" font-family="Georgia" font-size="21">L&amp;A</text>
             </svg>
         </a>
 
-        <nav class="navigation">
+        <nav class="navigation" aria-label="Navigare principală">
             <a href="index.html">Acasă</a>
             <a href="#about">Despre mine</a>
             <a href="#pictures">Momente</a>
         </nav>
-
     </header>
 
-
-    <!-- BANNER PRINCIPAL -->
-
     <section class="main-banner" id="about">
-
         <div class="main-image">
-            <img src="Poze/Index/Fundal.jpeg"
-                 alt="L&A Photography">
+            <img src="Poze/Index/Fundal.jpeg" alt="L&A Photography">
         </div>
-
         <h1 class="main-title">
             <span>L &amp; A</span>
             <strong>PHOTOGRAPHY</strong>
         </h1>
-
     </section>
 
-
-    <!-- SERVICII -->
-
     <section class="services" id="services">
-
         <div class="service-container">
 
             <article class="service-box">
-
                 <h2>Evenimente</h2>
-
-                <img src="Poze/Index/Evenimente.jpeg"
-                     alt="Evenimente">
-
+                <img src="Poze/Index/Evenimente.jpeg" alt="Evenimente">
                 <div class="gold-line"></div>
-
-                <p>
-                    Fotografie și videografie pentru evenimentul tău.
-                </p>
-
-                <button type="button"
-                        class="service-button"
-                        id="openEvents">
-
-                    Descoperă mai mult
-                    <span>→</span>
-
+                <p>Fotografie și videografie pentru evenimentul tău.</p>
+                <button type="button" class="service-button" id="openEvents">
+                    Descoperă mai mult <span>→</span>
                 </button>
-
             </article>
 
-
             <article class="service-box">
-
                 <h2>Ședințe foto studio</h2>
-
-                <img src="Poze/Index/Studio-Craciun.jpg"
-                     alt="Ședințe foto studio">
-
+                <img src="Poze/Index/Studio-Craciun.jpg" alt="Ședințe foto studio">
                 <div class="gold-line"></div>
-
-                <p>
-                    Ședințe foto tematice – Crăciun, New Born, aniversări.
-                </p>
-
+                <p>Ședințe foto tematice – Crăciun, New Born, aniversări.</p>
                 <a href="#contact" class="service-button">
-
-                    Descoperă mai mult
-                    <span>→</span>
-
+                    Descoperă mai mult <span>→</span>
                 </a>
-
             </article>
 
-
             <article class="service-box">
-
                 <h2>Colaborări cu grădinițe/școli</h2>
-
-                <img src="Poze/Index/Serbari-si-albume-copii.jpg"
-                     alt="Serbări și albume copii">
-
+                <img src="Poze/Index/Serbari-si-albume-copii.jpg" alt="Serbări și albume copii">
                 <div class="gold-line"></div>
-
-                <p>
-                    Serbări școlare, grădinițe, albume și pachete
-                    pentru Crăciun, Paște și final de an.
-                </p>
-
+                <p>Serbări școlare, grădinițe, albume și pachete pentru Crăciun, Paște și final de an.</p>
                 <a href="#contact" class="service-button">
-
-                    Descoperă mai mult
-                    <span>→</span>
-
+                    Descoperă mai mult <span>→</span>
                 </a>
-
             </article>
 
         </div>
-
     </section>
 
-
     <!-- POPUP EVENIMENTE ȘI PACHETE -->
+    <div class="events-overlay" id="eventsPopup" aria-hidden="true">
+        <div class="events-modal" role="dialog" aria-modal="true" aria-labelledby="eventsTitle">
 
-    <div class="events-overlay"
-         id="eventsPopup"
-         aria-hidden="true">
+            <button class="events-close" id="closeEvents" type="button" aria-label="Închide">&times;</button>
 
-        <div class="events-modal"
-             role="dialog"
-             aria-modal="true"
-             aria-labelledby="eventsTitle">
-
-            <!-- BUTON ÎNCHIDERE -->
-
-            <button class="events-close"
-                    id="closeEvents"
-                    type="button"
-                    aria-label="Închide">
-
-                &times;
-
-            </button>
-
-
-            <!-- =================================
-                 ECRAN 1 - EVENIMENTE
-                 ================================= -->
-
-            <section class="popup-view active"
-                     id="eventsView">
-
+            <!-- ECRAN EVENIMENTE -->
+            <section class="popup-view active" id="eventsView">
                 <div class="events-heading">
-
-                    <span class="events-eyebrow">
-                        L&A PHOTOGRAPHY
-                    </span>
-
-                    <h2 id="eventsTitle">
-                        Evenimente speciale
-                    </h2>
-
+                    <span class="events-eyebrow">L&amp;A PHOTOGRAPHY</span>
+                    <h2 id="eventsTitle">Evenimente speciale</h2>
                     <div class="events-heading-line"></div>
-
-                    <p>
-                        Fiecare poveste merită păstrată în imagini.
-                        Alege evenimentul tău și descoperă pachetele disponibile.
-                    </p>
-
+                    <p>Fiecare poveste merită păstrată în imagini. Alege evenimentul tău și descoperă pachetele disponibile.</p>
                 </div>
-
 
                 <div class="events-cards">
 
-
-                    <!-- CUNUNIE -->
-
                     <article class="event-card">
-
                         <div class="event-image">
-
-                            <img src="Poze/Index/Cununie.jpg"
-                                 alt="Cununie">
-
+                            <img src="Poze/Index/Cununie.jpg" alt="Cununie">
                             <span class="event-number">01</span>
-
                         </div>
-
                         <div class="event-info">
-
-                            <span class="event-category">
-                                MOMENTE ÎN DOI
-                            </span>
-
+                            <span class="event-category">MOMENTE ÎN DOI</span>
                             <h3>Cununie</h3>
-
-                            <p>
-                                Surprindem emoția și frumusețea
-                                unui început împreună.
-                            </p>
-
-                            <button class="event-link"
-                                    type="button"
-                                    data-event="Cununie">
-
-                                Vezi pachetele
-                                <span>→</span>
-
-                            </button>
-
+                            <p>Surprindem emoția și frumusețea unui început împreună.</p>
+                            <button class="event-link" type="button" data-event="Cununie">Vezi pachetele <span>→</span></button>
                         </div>
-
                     </article>
 
-
-                    <!-- NUNTĂ -->
-
                     <article class="event-card">
-
                         <div class="event-image">
-
-                            <img src="Poze/Index/Nunta.jpg"
-                                 alt="Nuntă">
-
+                            <img src="Poze/Index/Nunta.jpg" alt="Nuntă">
                             <span class="event-number">02</span>
-
                         </div>
-
                         <div class="event-info">
-
-                            <span class="event-category">
-                                O ZI DE NEUITAT
-                            </span>
-
+                            <span class="event-category">O ZI DE NEUITAT</span>
                             <h3>Nuntă</h3>
-
-                            <p>
-                                Păstrăm în imagini fiecare emoție
-                                și fiecare moment special.
-                            </p>
-
-                            <button class="event-link"
-                                    type="button"
-                                    data-event="Nuntă">
-
-                                Vezi pachetele
-                                <span>→</span>
-
-                            </button>
-
+                            <p>Păstrăm în imagini fiecare emoție și fiecare moment special.</p>
+                            <button class="event-link" type="button" data-event="Nuntă">Vezi pachetele <span>→</span></button>
                         </div>
-
                     </article>
 
-
-                    <!-- BOTEZ -->
-
                     <article class="event-card">
-
                         <div class="event-image">
-
-                            <img src="Poze/Index/Botez.jpg"
-                                 alt="Botez">
-
+                            <img src="Poze/Index/Botez.jpg" alt="Botez">
                             <span class="event-number">03</span>
-
                         </div>
-
                         <div class="event-info">
-
-                            <span class="event-category">
-                                PRIMUL CAPITOL
-                            </span>
-
+                            <span class="event-category">PRIMUL CAPITOL</span>
                             <h3>Botez</h3>
-
-                            <p>
-                                Amintiri prețioase dintr-o zi
-                                plină de iubire și bucurie.
-                            </p>
-
-                            <button class="event-link"
-                                    type="button"
-                                    data-event="Botez">
-
-                                Vezi pachetele
-                                <span>→</span>
-
-                            </button>
-
+                            <p>Amintiri prețioase dintr-o zi plină de iubire și bucurie.</p>
+                            <button class="event-link" type="button" data-event="Botez">Vezi pachetele <span>→</span></button>
                         </div>
-
                     </article>
 
-
-                    <!-- MAJORAT -->
-
                     <article class="event-card">
-
                         <div class="event-image">
-
-                            <img src="Poze/Index/Majorat.jpg"
-                                 alt="Majorat">
-
+                            <img src="Poze/Index/Majorat.jpg" alt="Majorat">
                             <span class="event-number">04</span>
-
                         </div>
-
                         <div class="event-info">
-
-                            <span class="event-category">
-                                OCAZII SPECIALE
-                            </span>
-
+                            <span class="event-category">OCAZII SPECIALE</span>
                             <h3>Majorat</h3>
-
-                            <p>
-                                Surprindem distracția, energia
-                                și momentele de neuitat.
-                            </p>
-
-                            <button class="event-link"
-                                    type="button"
-                                    data-event="Majorat">
-
-                                Vezi pachetele
-                                <span>→</span>
-
-                            </button>
-
+                            <p>Surprindem distracția, energia și momentele de neuitat.</p>
+                            <button class="event-link" type="button" data-event="Majorat">Vezi pachetele <span>→</span></button>
                         </div>
-
                     </article>
 
                 </div>
 
+                <div class="carousel-navigation" id="eventsNavigation">
+                    <span class="carousel-hint">Glisează pentru a descoperi evenimentele</span>
+                    <div class="carousel-dots" id="eventsDots" aria-label="Navigare evenimente"></div>
+                </div>
             </section>
 
-
-            <!-- =================================
-                 ECRAN 2 - PACHETE
-                 ================================= -->
-
-            <section class="popup-view packages-view"
-                     id="packagesView"
-                     hidden>
-
+            <!-- ECRAN PACHETE -->
+            <section class="popup-view packages-view" id="packagesView" hidden>
                 <div class="packages-heading">
-
-                    <button type="button"
-                            class="back-button"
-                            id="backToEvents">
-
-                        <span>←</span>
-                        Înapoi la evenimente
-
+                    <button type="button" class="back-button" id="backToEvents">
+                        <span>←</span> Înapoi la evenimente
                     </button>
-
-                    <span class="events-eyebrow">
-                        L&A PHOTOGRAPHY
-                    </span>
-
-                    <h2>
-                        Pachete pentru
-                        <span id="selectedEvent">Nuntă</span>
-                    </h2>
-
+                    <span class="events-eyebrow">L&amp;A PHOTOGRAPHY</span>
+                    <h2>Pachete pentru <span id="selectedEvent">Nuntă</span></h2>
                     <div class="events-heading-line"></div>
-
-                    <p>
-                        Alege experiența care se potrivește
-                        cel mai bine evenimentului tău.
-                    </p>
-
+                    <p>Alege experiența care se potrivește cel mai bine evenimentului tău.</p>
                 </div>
-
-
-                <!-- CARDURI PACHETE -->
 
                 <div class="packages-grid">
 
-
-                    <!-- SILVER -->
-
                     <article class="package-card silver">
-
                         <div class="package-top">
-
-                            <span class="package-label">
-                                PACHET
-                            </span>
-
+                            <span class="package-label">PACHET</span>
                             <h3>Silver</h3>
-
-                            <p class="package-description">
-                                Eleganță și amintiri de păstrat.
-                            </p>
-
+                            <p class="package-description">Eleganță și amintiri de păstrat.</p>
                         </div>
-
-
                         <div class="package-divider"></div>
-
-
                         <ul class="package-features">
-
-                            <li>
-                                Foto și video pe tot parcursul evenimentului
-                            </li>
-
-                            <li>
-                                Ședință foto în ziua evenimentului
-                            </li>
-
-                            <li>
-                                Sesiune foto cu invitații
-                            </li>
-
-                            <li>
-                                Procesarea fotografiilor și a videoclipurilor
-                            </li>
-
-                            <li>
-                                Best Moments – maximum 2 minute
-                            </li>
-
-                            <li>
-                                Galerie online pentru transferul fotografiilor
-                                și filmărilor
-                            </li>
-
+                            <li>Foto și video pe tot parcursul evenimentului</li>
+                            <li>Ședință foto în ziua evenimentului</li>
+                            <li>Sesiune foto cu invitații</li>
+                            <li>Procesarea fotografiilor și a videoclipurilor</li>
+                            <li>Best Moments – maximum 2 minute</li>
+                            <li>Galerie online pentru transferul fotografiilor și filmărilor</li>
                         </ul>
-
-
-                        <div class="package-delivery">
-
-                            <span class="delivery-icon">✓</span>
-
-                            Predare în maximum o lună
-
-                        </div>
-
-
-                        <button type="button"
-                                class="package-button"
-                                data-package="Silver">
-
-                            Solicită oferta
-                            <span>→</span>
-
-                        </button>
-
+                        <div class="package-delivery"><span class="delivery-icon">✓</span> Predare în maximum o lună</div>
+                        <button type="button" class="package-button" data-package="Silver">Solicită oferta <span>→</span></button>
                     </article>
-
-
-                    <!-- GOLD -->
 
                     <article class="package-card gold">
-
-                        <div class="popular-label">
-                            RECOMANDAREA NOASTRĂ
-                        </div>
-
-
+                        <div class="popular-label">RECOMANDAREA NOASTRĂ</div>
                         <div class="package-top">
-
-                            <span class="package-label">
-                                PACHET
-                            </span>
-
+                            <span class="package-label">PACHET</span>
                             <h3>Gold</h3>
-
-                            <p class="package-description">
-                                Mai multe detalii. Mai multe amintiri.
-                            </p>
-
+                            <p class="package-description">Mai multe detalii. Mai multe amintiri.</p>
                         </div>
-
-
                         <div class="package-divider"></div>
-
-
                         <ul class="package-features">
-
-                            <li>
-                                Foto și video pe tot parcursul evenimentului
-                            </li>
-
-                            <li>
-                                Ședință foto în ziua evenimentului
-                            </li>
-
-                            <li>
-                                Sesiune foto cu invitații
-                            </li>
-
-                            <li>
-                                Procesarea fotografiilor și a videoclipurilor
-                            </li>
-
-                            <li>
-                                Best Moments – peste 3 minute
-                            </li>
-
-                            <li>
-                                Galerie online pentru transferul fotografiilor
-                                și filmărilor
-                            </li>
-
-                            <li>
-                                Stick USB cu fotografii și filmări
-                            </li>
-
-                            <li>
-                                Save the Date
-                            </li>
-
-                            <li>
-                                Trash the Dress
-                            </li>
-
-                            <li>
-                                Album foto 30×60
-                            </li>
-
+                            <li>Foto și video pe tot parcursul evenimentului</li>
+                            <li>Ședință foto în ziua evenimentului</li>
+                            <li>Sesiune foto cu invitații</li>
+                            <li>Procesarea fotografiilor și a videoclipurilor</li>
+                            <li>Best Moments – peste 3 minute</li>
+                            <li>Galerie online pentru transferul fotografiilor și filmărilor</li>
+                            <li>Stick USB cu fotografii și filmări</li>
+                            <li>Save the Date</li>
+                            <li>Trash the Dress</li>
+                            <li>Album foto 30×60</li>
                         </ul>
-
-
-                        <div class="package-delivery">
-
-                            <span class="delivery-icon">✓</span>
-
-                            Predare în maximum o lună
-
-                        </div>
-
-
-                        <button type="button"
-                                class="package-button"
-                                data-package="Gold">
-
-                            Solicită oferta
-                            <span>→</span>
-
-                        </button>
-
+                        <div class="package-delivery"><span class="delivery-icon">✓</span> Predare în maximum o lună</div>
+                        <button type="button" class="package-button" data-package="Gold">Solicită oferta <span>→</span></button>
                     </article>
-
-
-                    <!-- PLATINUM -->
 
                     <article class="package-card platinum">
-
                         <div class="package-top">
-
-                            <span class="package-label">
-                                PACHET
-                            </span>
-
+                            <span class="package-label">PACHET</span>
                             <h3>Platinum</h3>
-
-                            <p class="package-description">
-                                Experiența completă, fără compromisuri.
-                            </p>
-
+                            <p class="package-description">Experiența completă, fără compromisuri.</p>
                         </div>
-
-
                         <div class="package-divider"></div>
-
-
                         <ul class="package-features">
-
-                            <li>
-                                Doi fotografi și un videograf pe tot
-                                parcursul evenimentului
-                            </li>
-
-                            <li>
-                                Ședință foto în ziua evenimentului
-                            </li>
-
-                            <li>
-                                Sesiune foto cu invitații
-                            </li>
-
-                            <li>
-                                Procesarea fotografiilor și a videoclipurilor
-                            </li>
-
-                            <li>
-                                Best Moments Premium
-                            </li>
-
-                            <li>
-                                Galerie online și stick USB pentru transferul
-                                fotografiilor și videoclipurilor
-                            </li>
-
-                            <li>
-                                Save the Date
-                            </li>
-
-                            <li>
-                                Trash the Dress
-                            </li>
-
-                            <li>
-                                Filmare cu dronă
-                            </li>
-
-                            <li>
-                                Predare în maximum o luna
-                            </li>
-
-                            <li>
-                                Album foto 30×60
-                            </li>
-
-                            <li>
-                                Album foto nași 30×60
-                            </li>
-
-                            <li>
-                                Cabină foto la local – 6 ore, cu costumații,
-                                background tematic și magneți pentru fotografii
-                            </li>
-
+                            <li>Doi fotografi și un videograf pe tot parcursul evenimentului</li>
+                            <li>Ședință foto în ziua evenimentului</li>
+                            <li>Sesiune foto cu invitații</li>
+                            <li>Procesarea fotografiilor și a videoclipurilor</li>
+                            <li>Best Moments Premium</li>
+                            <li>Galerie online și stick USB pentru transferul fotografiilor și videoclipurilor</li>
+                            <li>Save the Date</li>
+                            <li>Trash the Dress</li>
+                            <li>Filmări cu dronă</li>
+                            <li>Album foto 30×60</li>
+                            <li>Album foto nași 30×60</li>
+                            <li>Cabină foto la local – 6 ore, cu costumații, background tematic și magneți pentru fotografii</li>
                         </ul>
-
-
-                        <div class="package-delivery">
-
-                            <span class="delivery-icon">✓</span>
-
-                            Predare in maximum o luna
-
-                        </div>
-
-
-                        <button type="button"
-                                class="package-button"
-                                data-package="Platinum">
-
-                            Solicită oferta
-                            <span>→</span>
-
-                        </button>
-
+                        <div class="package-delivery"><span class="delivery-icon">✓</span> Predare în maximum o lună</div>
+                        <button type="button" class="package-button" data-package="Platinum">Solicită oferta <span>→</span></button>
                     </article>
 
-
                 </div>
 
+                <div class="carousel-navigation" id="packagesNavigation">
+                    <span class="carousel-hint">Glisează pentru a compara pachetele</span>
+                    <div class="carousel-dots" id="packagesDots" aria-label="Navigare pachete"></div>
+                </div>
 
                 <div class="packages-footer">
-
                     <span class="footer-ornament">✦</span>
-
-                    <p>
-                        Fiecare eveniment este unic.
-                        Hai să discutăm despre povestea ta!
-                    </p>
-
+                    <p>Fiecare eveniment este unic. Hai să discutăm despre povestea ta!</p>
                 </div>
-
             </section>
 
         </div>
-
     </div>
-
-
-    <!-- LINIE FOOTER -->
 
     <div class="footer-line"></div>
 
-
-    <!-- FOOTER -->
-
     <footer class="footer" id="contact">
-
-
-        <a href="mailto:luciandragomir1993@gmail.com"
-           class="contact-item email">
-
-            <svg viewBox="0 0 24 24">
-                <rect x="3" y="5" width="18" height="14" rx="1"/>
-                <path d="M3 6 L12 13 L21 6"/>
-            </svg>
-
+        <a href="mailto:luciandragomir1993@gmail.com" class="contact-item email">
+            <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M3 6 L12 13 L21 6"/></svg>
             <span>luciandragomir1993@gmail.com</span>
-
         </a>
 
-
-        <a href="tel:0730548517"
-           class="contact-item phone">
-
-            <svg viewBox="0 0 24 24">
-                <path d="M6 3 H18 Q20 3 20 5 V9
-                         Q20 11 18 11 H16
-                         Q14 11 13 9 L11 7
-                         Q10 6 9 8 L7 10
-                         Q10 15 14 17 L16 15
-                         Q18 14 19 16 L21 18
-                         Q22 20 20 21 Q16 23 11 20
-                         Q5 16 3 10 Q1 5 4 3 Z"/>
-            </svg>
-
+        <a href="tel:0730548517" class="contact-item phone">
+            <svg viewBox="0 0 24 24"><path d="M6 3 H18 Q20 3 20 5 V9 Q20 11 18 11 H16 Q14 11 13 9 L11 7 Q10 6 9 8 L7 10 Q10 15 14 17 L16 15 Q18 14 19 16 L21 18 Q22 20 20 21 Q16 23 11 20 Q5 16 3 10 Q1 5 4 3 Z"/></svg>
             <span>0730 548 517</span>
-
         </a>
-
 
         <div class="contact-item address">
-
-            <svg viewBox="0 0 24 24">
-                <path d="M12 22 S4 14 4 9
-                         A8 8 0 1 1 20 9
-                         C20 14 12 22 12 22 Z"/>
-                <circle cx="12" cy="9" r="2.5"/>
-            </svg>
-
-            <span>
-                Sediu studio: Filipești de Pădure,
-                str. Eleșteului, nr. 55A
-            </span>
-
+            <svg viewBox="0 0 24 24"><path d="M12 22 S4 14 4 9 A8 8 0 1 1 20 9 C20 14 12 22 12 22 Z"/><circle cx="12" cy="9" r="2.5"/></svg>
+            <span>Sediu studio: Filipești de Pădure, str. Eleșteului, nr. 55A</span>
         </div>
 
-
-        <a href="https://www.instagram.com/luc14nn"
-           target="_blank"
-           rel="noopener noreferrer"
-           class="contact-item instagram">
-
-            <svg viewBox="0 0 24 24">
-                <rect x="3" y="3" width="18" height="18" rx="5"/>
-                <circle cx="12" cy="12" r="4"/>
-                <circle cx="18" cy="6" r="1"/>
-            </svg>
-
+        <a href="https://www.instagram.com/luc14nn" target="_blank" rel="noopener noreferrer" class="contact-item instagram">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="18" cy="6" r="1"/></svg>
             <span>Instagram: Luc14nn</span>
-
         </a>
 
-
-        <a href="https://www.facebook.com/share/1dqGhz2PMT/?mibextid=wwXIfr"
-           target="_blank"
-           rel="noopener noreferrer"
-           class="contact-item facebook">
-
-            <svg viewBox="0 0 24 24">
-                <path d="M14 21 V12 H17 L18 8 H14
-                         V6 Q14 4 16 4 H18 V1
-                         H15 Q10 1 10 6 V8 H7 V12 H10 V21"/>
-            </svg>
-
+        <a href="https://www.facebook.com/share/1dqGhz2PMT/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="contact-item facebook">
+            <svg viewBox="0 0 24 24"><path d="M14 21 V12 H17 L18 8 H14 V6 Q14 4 16 4 H18 V1 H15 Q10 1 10 6 V8 H7 V12 H10 V21"/></svg>
             <span>Facebook: Dragomir Lucian</span>
-
         </a>
-
     </footer>
 
-
     <div class="footer-bottom-line"></div>
-
 </div>
 
-
 <script src="script.js"></script>
-
 </body>
 </html>
