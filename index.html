@@ -5,27 +5,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <meta name="description" content="L&A Photography - Fotografie și videografie pentru evenimente, ședințe foto și albume.">
-
     <title>L&A Photography</title>
-
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <!-- RESTUL PAGINII TALE -->
+    <div class="site-shell">
+
+        <!-- PASTREAZA AICI HEADERUL ORIGINAL -->
+        <!-- PASTREAZA AICI BANNERUL ORIGINAL -->
+        <!-- PASTREAZA AICI SERVICIILE ORIGINALE -->
+        <!-- PASTREAZA AICI FOOTERUL ORIGINAL -->
+
+        <!-- Butonul care deschide ofertele -->
+        <button type="button" id="openEvents" class="service-button">
+            Descoperă ofertele <span>→</span>
+        </button>
+
+    </div>
 
     <!-- POPUP EVENIMENTE -->
     <div class="events-popup" id="eventsPopup" aria-hidden="true">
-        <div class="events-modal" role="dialog" aria-modal="true" aria-label="Oferte L&A Photography">
 
-            <button type="button" class="close-popup" id="closeEvents" aria-label="Închide">
+        <div class="events-modal"
+             role="dialog"
+             aria-modal="true"
+             aria-label="Oferte L&A Photography"
+             tabindex="-1">
+
+            <button type="button"
+                    class="close-popup"
+                    id="closeEvents"
+                    aria-label="Închide">
                 &times;
             </button>
 
-            <!-- PAGINA EVENIMENTELOR -->
+            <!-- EVENIMENTE -->
             <section class="popup-view events-view" id="eventsView">
 
                 <div class="events-heading">
@@ -71,17 +88,17 @@
 
                 <div class="carousel-navigation" id="eventsNavigation">
                     <span class="carousel-hint">Glisează pentru a descoperi evenimentele</span>
-                    <div class="carousel-dots" id="eventsDots" aria-label="Navigare evenimente"></div>
+                    <div class="carousel-dots" id="eventsDots"></div>
                 </div>
 
             </section>
 
-            <!-- PAGINA PACHETELOR -->
+            <!-- PACHETE -->
             <section class="popup-view packages-view" id="packagesView" hidden>
 
                 <div class="packages-heading">
 
-                    <button type="button" class="back-button" id="backToEvents" aria-label="Înapoi la evenimente">
+                    <button type="button" class="back-button" id="backToEvents">
                         <span aria-hidden="true">←</span>
                         <span class="back-label">Înapoi la evenimente</span>
                     </button>
@@ -210,7 +227,7 @@
 
                 <div class="carousel-navigation" id="packagesNavigation">
                     <span class="carousel-hint">Glisează pentru a compara pachetele</span>
-                    <div class="carousel-dots" id="packagesDots" aria-label="Navigare pachete"></div>
+                    <div class="carousel-dots" id="packagesDots"></div>
                 </div>
 
                 <div class="packages-footer">
