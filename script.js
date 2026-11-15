@@ -68,7 +68,6 @@ document.addEventListener("DOMContentLoaded", () => {
             closePopup();
         }
 
-        /* Focus trap */
         if (event.key === "Tab") {
             const focusable = modal.querySelectorAll(
                 'button:not([disabled]), a[href], [tabindex]:not([tabindex="-1"])'
@@ -152,7 +151,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const message =
                 `Bună ziua! Am văzut site-ul L&A Photography și sunt interesat(ă) de o ofertă pentru evenimentul: ${currentEvent}.\n\n` +
                 `Pachetul dorit: ${packageName}.\n\n` +
-                `Aș dori să primesc mai multe detalii și informații despre preț. Mulțumesc!`;
+                `Aș dori să primesc mai multe detalii despre pachet și disponibilitate. Mulțumesc!`;
 
             const whatsappURL =
                 `https://wa.me/${photographerPhone}?text=${encodeURIComponent(message)}`;
@@ -185,21 +184,23 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    /* Cardul cel mai apropiat de centrul caruselului */
     function getActiveIndex(container) {
         const cards = getCards(container);
 
         if (!cards.length) return 0;
 
         const containerRect = container.getBoundingClientRect();
+        const containerCenter = containerRect.left + container.clientWidth / 2;
+
         let closestIndex = 0;
         let closestDistance = Infinity;
 
         cards.forEach((card, index) => {
             const cardRect = card.getBoundingClientRect();
+            const cardCenter = cardRect.left + cardRect.width / 2;
 
-            const distance = Math.abs(
-                cardRect.left - containerRect.left
-            );
+            const distance = Math.abs(cardCenter - containerCenter);
 
             if (distance < closestDistance) {
                 closestDistance = distance;
@@ -222,7 +223,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
             dot.type = "button";
             dot.className = "carousel-dot";
-
             dot.setAttribute("aria-label", `Cardul ${index + 1}`);
 
             if (index === 0) {
@@ -233,8 +233,20 @@ document.addEventListener("DOMContentLoaded", () => {
             dot.addEventListener("click", () => {
                 if (!isMobile()) return;
 
+                const containerRect = container.getBoundingClientRect();
+                const cardRect = card.getBoundingClientRect();
+
+                const cardLeft =
+                    cardRect.left -
+                    containerRect.left +
+                    container.scrollLeft;
+
+                const centeredPosition =
+                    cardLeft -
+                    (container.clientWidth - card.clientWidth) / 2;
+
                 container.scrollTo({
-                    left: card.offsetLeft - container.offsetLeft,
+                    left: centeredPosition,
                     behavior: "smooth"
                 });
             });
