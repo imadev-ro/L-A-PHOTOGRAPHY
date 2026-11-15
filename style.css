@@ -1756,3 +1756,75 @@ a:focus-visible {
         display: flex !important;
     }
 }
+/* ==========================================
+   CORECTII POPUP PE TELEFON
+   ========================================== */
+
+@media (max-width: 700px) {
+
+    /* Fereastra popup */
+    .events-modal {
+        position: fixed !important;
+        inset: 0 !important;
+        width: 100% !important;
+        height: 100dvh !important;
+        max-height: 100dvh !important;
+        margin: 0 !important;
+        padding: 12px 12px 24px !important;
+        overflow-x: hidden !important;
+        overflow-y: auto !important;
+        box-sizing: border-box !important;
+        align-items: flex-start !important;
+    }
+
+    /* Continutul popup-ului */
+    .events-modal-content {
+        width: 100% !important;
+        max-width: 100% !important;
+        max-height: none !important;
+        height: auto !important;
+        margin: 0 auto !important;
+        padding: 16px 12px 24px !important;
+        overflow: visible !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Zona cu cardurile */
+    .events-cards,
+    .packages-grid {
+        height: auto !important;
+        max-height: none !important;
+        overflow-y: hidden !important;
+        align-items: stretch !important;
+    }
+
+    /* Cardurile */
+    .event-card,
+    .package-card {
+        height: auto !important;
+        min-height: 0 !important;
+        max-height: none !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Butoanele de navigare */
+    .carousel-navigation {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        gap: 10px !important;
+        width: 100% !important;
+        margin: 16px 0 0 !important;
+        padding: 0 !important;
+        box-sizing: border-box !important;
+    }
+
+    .carousel-navigation button {
+        flex: 1 1 0 !important;
+        min-width: 0 !important;
+        width: auto !important;
+        margin: 0 !important;
+        box-sizing: border-box !important;
+        text-align: center !important;
+    }
+}
