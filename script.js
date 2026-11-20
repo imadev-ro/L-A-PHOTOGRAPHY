@@ -703,30 +703,26 @@ document.addEventListener("DOMContentLoaded", () => {
        OPEN POPUP
        ===================================================== */
 
-    function openServicePopup(popup) {
+    
+function openServicePopup(popup) {
+    if (!popup) return;
 
-        if (!popup) return;
+    popup.style.display = "flex";
+    popup.classList.add("active");
+    popup.setAttribute("aria-hidden", "false");
 
-        popup.classList.add("active");
+    document.body.style.overflow = "hidden";
+}
 
-        document.body.style.overflow = "hidden";
+function closeServicePopup(popup) {
+    if (!popup) return;
 
-    }
+    popup.classList.remove("active");
+    popup.style.display = "none";
+    popup.setAttribute("aria-hidden", "true");
 
-
-    /* =====================================================
-       CLOSE POPUP
-       ===================================================== */
-
-    function closeServicePopup(popup) {
-
-        if (!popup) return;
-
-        popup.classList.remove("active");
-
-        document.body.style.overflow = "";
-
-    }
+    document.body.style.overflow = "";
+}
 
 
     /* =====================================================
