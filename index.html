@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ro">
 <head>
@@ -42,128 +43,175 @@
         </nav>
     </header>
 
+
     <!-- BANNER -->
     <section class="main-banner" id="about">
         <div class="main-image">
             <img src="Poze/Index/Fundal.jpeg" alt="L&A Photography">
         </div>
+
         <h1 class="main-title">
             <span>L &amp; A</span>
             <strong>PHOTOGRAPHY</strong>
         </h1>
     </section>
 
+
     <!-- SERVICII -->
     <section class="services" id="services">
         <div class="service-container">
 
+            <!-- EVENIMENTE -->
             <article class="service-box">
                 <h2>Evenimente</h2>
                 <img src="Poze/Index/Evenimente.jpeg" alt="Evenimente">
                 <div class="gold-line"></div>
                 <p>Fotografie și videografie pentru evenimentul tău.</p>
+
                 <button type="button" class="service-button" id="openEvents">
                     Descoperă mai mult <span>→</span>
                 </button>
             </article>
 
+
+            <!-- ȘEDINȚE FOTO STUDIO -->
             <article class="service-box">
                 <h2>Ședințe foto studio</h2>
                 <img src="Poze/Index/Studio-Craciun.jpg" alt="Ședințe foto studio">
                 <div class="gold-line"></div>
-                <p>Ședințe foto tematice – Crăciun, New Born, aniversări.</p>
-                <a href="#contact" class="service-button">
+                <p>Ședințe foto tematice – Crăciun, maternitate, aniversări.</p>
+
+                <button
+                    type="button"
+                    class="service-button"
+                    data-service-popup="studio"
+                >
                     Descoperă mai mult <span>→</span>
-                </a>
+                </button>
             </article>
 
+
+            <!-- COLABORĂRI -->
             <article class="service-box">
                 <h2>Colaborări cu grădinițe/școli</h2>
                 <img src="Poze/Index/Serbari-si-albume-copii.jpg" alt="Serbări și albume copii">
                 <div class="gold-line"></div>
-                <p>Serbări școlare, grădinițe, albume și pachete pentru Crăciun, Paște și final de an.</p>
-                <a href="#contact" class="service-button">
+                <p>Serbări școlare, grădinițe, albume și ședințe foto tematice.</p>
+
+                <button
+                    type="button"
+                    class="service-button"
+                    data-service-popup="collaborations"
+                >
                     Descoperă mai mult <span>→</span>
-                </a>
+                </button>
             </article>
 
         </div>
     </section>
 
-    <!-- POPUP EVENIMENTE -->
+
+    <!-- =====================================================
+         POPUP EVENIMENTE
+         ===================================================== -->
+
     <div class="events-overlay" id="eventsPopup" aria-hidden="true">
+
         <div class="events-modal" role="dialog" aria-modal="true" aria-label="Oferte L&A Photography">
 
             <button class="events-close" id="closeEvents" type="button" aria-label="Închide">
                 &times;
             </button>
 
+
             <!-- EVENIMENTE -->
             <section class="popup-view events-view" id="eventsView">
 
                 <div class="events-heading">
                     <span class="events-eyebrow">L&amp;A PHOTOGRAPHY</span>
+
                     <h2>Alege evenimentul tău</h2>
+
                     <div class="events-heading-line"></div>
-                    <p>Fiecare poveste merită păstrată în imagini. Alege evenimentul tău și descoperă pachetele disponibile.</p>
+
+                    <p>
+                        Fiecare poveste merită păstrată în imagini.
+                        Alege evenimentul tău și descoperă pachetele disponibile.
+                    </p>
                 </div>
+
 
                 <div class="events-cards">
 
+                    <!-- CUNUNIE -->
                     <article class="event-card">
                         <div class="event-image">
                             <img src="Poze/Index/Cununie.jpg" alt="Cununie">
                             <span class="event-number">01</span>
                         </div>
+
                         <div class="event-info">
                             <span class="event-category">MOMENTE ÎN DOI</span>
                             <h3>Cununie</h3>
                             <p>Surprindem emoția și frumusețea unui început împreună.</p>
+
                             <button class="event-link" type="button" data-event="Cununie">
                                 Vezi pachetele <span>→</span>
                             </button>
                         </div>
                     </article>
 
+
+                    <!-- NUNTĂ -->
                     <article class="event-card">
                         <div class="event-image">
                             <img src="Poze/Index/Nunta.jpg" alt="Nuntă">
                             <span class="event-number">02</span>
                         </div>
+
                         <div class="event-info">
                             <span class="event-category">O ZI DE NEUITAT</span>
                             <h3>Nuntă</h3>
                             <p>Păstrăm în imagini fiecare emoție și fiecare moment special.</p>
+
                             <button class="event-link" type="button" data-event="Nuntă">
                                 Vezi pachetele <span>→</span>
                             </button>
                         </div>
                     </article>
 
+
+                    <!-- BOTEZ -->
                     <article class="event-card">
                         <div class="event-image">
                             <img src="Poze/Index/Botez.jpg" alt="Botez">
                             <span class="event-number">03</span>
                         </div>
+
                         <div class="event-info">
                             <span class="event-category">PRIMUL CAPITOL</span>
                             <h3>Botez</h3>
                             <p>Amintiri prețioase dintr-o zi plină de iubire și bucurie.</p>
+
                             <button class="event-link" type="button" data-event="Botez">
                                 Vezi pachetele <span>→</span>
                             </button>
                         </div>
                     </article>
 
+
+                    <!-- MAJORAT -->
                     <article class="event-card">
                         <div class="event-image">
                             <img src="Poze/Index/Majorat.jpg" alt="Majorat">
                             <span class="event-number">04</span>
                         </div>
+
                         <div class="event-info">
                             <span class="event-category">OCAZII SPECIALE</span>
                             <h3>Majorat</h3>
                             <p>Surprindem distracția, energia și momentele de neuitat.</p>
+
                             <button class="event-link" type="button" data-event="Majorat">
                                 Vezi pachetele <span>→</span>
                             </button>
@@ -172,137 +220,50 @@
 
                 </div>
 
+
                 <div class="carousel-navigation" id="eventsNavigation">
                     <span class="carousel-hint">Glisează pentru a descoperi evenimentele</span>
                     <div class="carousel-dots" id="eventsDots" aria-label="Navigare evenimente"></div>
                 </div>
+
             </section>
 
-            <!-- PACHETE -->
+
+            <!-- PACHETE EVENIMENTE -->
             <section class="popup-view packages-view" id="packagesView" hidden>
 
                 <div class="packages-heading">
+
                     <button type="button" class="back-button" id="backToEvents">
                         <span>←</span>
                         <span class="back-label">Înapoi la evenimente</span>
                     </button>
 
                     <span class="events-eyebrow">L&amp;A PHOTOGRAPHY</span>
-                    <h2>Pachete pentru <span id="selectedEvent">Nuntă</span></h2>
+
+                    <h2>
+                        Pachete pentru
+                        <span id="selectedEvent">Nuntă</span>
+                    </h2>
+
                     <div class="events-heading-line"></div>
-                    <p>Alege experiența care se potrivește cel mai bine evenimentului tău.</p>
-                </div>
 
-                <div class="packages-grid">
-
-                    <!-- SILVER -->
-                    <article class="package-card silver">
-                        <div class="package-top">
-                            <span class="package-label">PACHET</span>
-                            <h3>Silver</h3>
-                            <p class="package-price">3.500 lei</p>
-                            <p class="package-description">Eleganță și amintiri de păstrat.</p>
-                        </div>
-
-                        <div class="package-divider"></div>
-
-                        <ul class="package-features">
-                            <li>Foto și video pe tot parcursul evenimentului</li>
-                            <li>Ședință foto în ziua evenimentului</li>
-                            <li>Sesiune foto cu invitații</li>
-                            <li>Procesarea fotografiilor și a videoclipurilor</li>
-                            <li>Best Moments – maximum 2 minute</li>
-                            <li>Galerie online pentru transferul fotografiilor și filmărilor</li>
-                        </ul>
-
-                        <div class="package-delivery">
-                            <span class="delivery-icon">✓</span>
-                            Predare în maximum o lună
-                        </div>
-
-                        <button type="button" class="package-button" data-package="Silver">
-                            Solicită oferta <span>→</span>
-                        </button>
-                    </article>
-
-                    <!-- GOLD -->
-                    <article class="package-card gold">
-                        <div class="popular-label">RECOMANDAREA NOASTRĂ</div>
-
-                        <div class="package-top">
-                            <span class="package-label">PACHET</span>
-                            <h3>Gold</h3>
-                            <p class="package-price">5.000 lei</p>
-                            <p class="package-description">Mai multe detalii. Mai multe amintiri.</p>
-                        </div>
-
-                        <div class="package-divider"></div>
-
-                        <ul class="package-features">
-                            <li>Foto și video pe tot parcursul evenimentului</li>
-                            <li>Ședință foto în ziua evenimentului</li>
-                            <li>Sesiune foto cu invitații</li>
-                            <li>Procesarea fotografiilor și a videoclipurilor</li>
-                            <li>Best Moments – peste 3 minute</li>
-                            <li>Galerie online pentru transferul fotografiilor și filmărilor</li>
-                            <li>Stick USB cu fotografii și filmări</li>
-                            <li>Save the Date</li>
-                            <li>Trash the Dress</li>
-                            <li>Album foto 30×60</li>
-                        </ul>
-
-                        <div class="package-delivery">
-                            <span class="delivery-icon">✓</span>
-                            Predare în maximum o lună
-                        </div>
-
-                        <button type="button" class="package-button" data-package="Gold">
-                            Solicită oferta <span>→</span>
-                        </button>
-                    </article>
-
-                    <!-- PLATINUM -->
-                    <article class="package-card platinum">
-                        <div class="package-top">
-                            <span class="package-label">PACHET</span>
-                            <h3>Platinum</h3>
-                            <p class="package-price">8.500 lei</p>
-                            <p class="package-description">Experiența completă, fără compromisuri.</p>
-                        </div>
-
-                        <div class="package-divider"></div>
-
-                        <ul class="package-features">
-                            <li>Doi fotografi și un videograf pe tot parcursul evenimentului</li>
-                            <li>Ședință foto în ziua evenimentului</li>
-                            <li>Sesiune foto cu invitații</li>
-                            <li>Procesarea fotografiilor și a videoclipurilor</li>
-                            <li>Best Moments Premium</li>
-                            <li>Galerie online și stick USB pentru transferul fotografiilor și videoclipurilor</li>
-                            <li>Save the Date</li>
-                            <li>Trash the Dress</li>
-                            <li>Filmări cu dronă</li>
-                            <li>Album foto 30×60</li>
-                            <li>Album foto nași 30×60</li>
-                            <li>Cabină foto la local – 6 ore, cu costumații, background tematic și magneți pentru fotografii</li>
-                        </ul>
-
-                        <div class="package-delivery">
-                            <span class="delivery-icon">✓</span>
-                            Predare în maximum o lună
-                        </div>
-
-                        <button type="button" class="package-button" data-package="Platinum">
-                            Solicită oferta <span>→</span>
-                        </button>
-                    </article>
+                    <p>
+                        Alege experiența care se potrivește cel mai bine evenimentului tău.
+                    </p>
 
                 </div>
+
+
+                <!-- PACHETE GENERATE DIN JAVASCRIPT -->
+                <div class="packages-grid" id="packagesGrid"></div>
+
 
                 <div class="carousel-navigation" id="packagesNavigation">
                     <span class="carousel-hint">Glisează pentru a compara pachetele</span>
                     <div class="carousel-dots" id="packagesDots" aria-label="Navigare pachete"></div>
                 </div>
+
 
                 <div class="packages-footer">
                     <span class="footer-ornament">✦</span>
@@ -310,10 +271,358 @@
                 </div>
 
             </section>
+
         </div>
     </div>
 
-    <!-- FOOTER -->
+
+
+    <!-- =====================================================
+         POPUP ȘEDINȚE FOTO STUDIO
+         ===================================================== -->
+
+    <div
+        class="service-popup-overlay"
+        id="studioPopup"
+        aria-hidden="true"
+    >
+
+        <div
+            class="service-popup"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Ședințe foto studio"
+        >
+
+            <button
+                class="service-popup-close"
+                type="button"
+                aria-label="Închide"
+            >
+                &times;
+            </button>
+
+
+            <div class="service-popup-content">
+
+                <!-- TITLU -->
+                <div class="service-popup-header">
+
+                    <span class="service-popup-eyebrow">
+                        L&amp;A PHOTOGRAPHY
+                    </span>
+
+                    <h2>Ședințe foto studio</h2>
+
+                    <p>
+                        Crăciun, maternitate, aniversări și alte momente speciale,
+                        surprinse într-un decor creat cu grijă.
+                    </p>
+
+                </div>
+
+
+                <!-- PACHET STANDARD -->
+                <div class="studio-package">
+
+                    <div class="studio-package-header">
+
+                        <div>
+                            <span class="package-label">PACHET</span>
+                            <h3>Standard</h3>
+                        </div>
+
+                        <div class="studio-price">
+                            <span>450</span>
+                            <small>LEI</small>
+                        </div>
+
+                    </div>
+
+
+                    <div class="studio-package-divider"></div>
+
+
+                    <!-- BENEFICII -->
+                    <ul class="studio-features">
+
+                        <li>
+                            <span class="feature-icon">✓</span>
+
+                            <div>
+                                <strong>Durată ședință</strong>
+                                <span>30 minute – 1 oră în studio</span>
+                            </div>
+                        </li>
+
+
+                        <li>
+                            <span class="feature-icon">✓</span>
+
+                            <div>
+                                <strong>Decoruri tematice</strong>
+                                <span>Acces la decorurile tematice disponibile în studio</span>
+                            </div>
+                        </li>
+
+
+                        <li>
+                            <span class="feature-icon">✓</span>
+
+                            <div>
+                                <strong>Fotografii editate profesional</strong>
+                                <span>40–50 de fotografii</span>
+                            </div>
+                        </li>
+
+
+                        <li>
+                            <span class="feature-icon">✓</span>
+
+                            <div>
+                                <strong>Galerie online privată</strong>
+                                <span>Descărcarea fotografiilor în format digital</span>
+                            </div>
+                        </li>
+
+
+                        <li>
+                            <span class="feature-icon">✓</span>
+
+                            <div>
+                                <strong>Livrare</strong>
+                                <span>5–7 zile lucrătoare</span>
+                            </div>
+                        </li>
+
+                    </ul>
+
+
+                    <!-- OPȚIUNI SUPLIMENTARE -->
+                    <div class="studio-extra-options">
+
+                        <div class="studio-extra">
+
+                            <span class="studio-extra-icon">+</span>
+
+                            <div>
+                                <strong>Persoană suplimentară</strong>
+
+                                <p>
+                                    Pachetul este destinat familiei restrânse
+                                    (părinți și copii). Pentru fiecare persoană
+                                    în plus se aplică un tarif de 100 lei.
+                                </p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="studio-extra">
+
+                            <span class="studio-extra-icon">+</span>
+
+                            <div>
+                                <strong>Livrare Express</strong>
+
+                                <p>
+                                    Opțiune de livrare în maximum 48 de ore.
+                                </p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- WHATSAPP -->
+                    <a
+                        href="#"
+                        class="studio-contact-button"
+                        data-whatsapp-studio
+                    >
+                        Solicită o programare
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         POPUP COLABORĂRI GRĂDINIȚE / ȘCOLI
+         ===================================================== -->
+
+    <div
+        class="service-popup-overlay"
+        id="collaborationsPopup"
+        aria-hidden="true"
+    >
+
+        <div
+            class="service-popup collaborations-popup"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Colaborări cu grădinițe și școli"
+        >
+
+            <button
+                class="service-popup-close"
+                type="button"
+                aria-label="Închide"
+            >
+                &times;
+            </button>
+
+
+            <div class="service-popup-content">
+
+                <!-- INTRODUCERE -->
+                <div class="service-popup-header">
+
+                    <span class="service-popup-eyebrow">
+                        L&amp;A PHOTOGRAPHY
+                    </span>
+
+                    <h2>Colaborări cu grădinițe și școli</h2>
+
+                    <p class="collaborations-intro">
+                        Transformăm copilăria și adolescența în amintiri
+                        prețioase, surprinse cu căldură, răbdare și pasiune.
+                        De la primii pași în colectivitate până la momentele
+                        importante ale adolescenței, creăm fotografii autentice,
+                        în care fiecare copil și tânăr se simte văzut,
+                        ascultat și în largul lui.
+                    </p>
+
+                </div>
+
+
+                <!-- SERVICII -->
+                <div class="collaborations-services">
+
+
+                    <!-- SERBĂRI -->
+                    <div class="collaboration-service">
+
+                        <div class="collaboration-number">01</div>
+
+                        <div class="collaboration-service-content">
+
+                            <h3>Serbări</h3>
+
+                            <p>
+                                Servicii foto-video pentru serbări și evenimente
+                                organizate în cadrul instituțiilor de învățământ,
+                                surprinzând emoțiile, momentele speciale
+                                și bucuria copiilor.
+                            </p>
+
+                            <span class="collaboration-tag">
+                                Fotografie &amp; Video
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- FINAL DE AN -->
+                    <div class="collaboration-service">
+
+                        <div class="collaboration-number">02</div>
+
+                        <div class="collaboration-service-content">
+
+                            <h3>Final de an</h3>
+
+                            <p>
+                                Ședințe foto dedicate finalului de an,
+                                fotografii individuale și de grup,
+                                precum și albume foto care păstrează
+                                amintirile anului școlar.
+                            </p>
+
+                            <span class="collaboration-tag">
+                                Ședințe foto &amp; Albume
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- ȘEDINȚE TEMATICE -->
+                    <div class="collaboration-service">
+
+                        <div class="collaboration-number">03</div>
+
+                        <div class="collaboration-service-content">
+
+                            <h3>Ședințe foto tematice</h3>
+
+                            <p>
+                                Decoruri și ședințe foto speciale pentru
+                                diferite ocazii, cu fotografii și amintiri
+                                personalizate pentru fiecare copil.
+                            </p>
+
+                            <span class="collaboration-tag">
+                                Crăciun · 8 Martie · Paște
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- FINAL POPUP -->
+                <div class="collaborations-footer">
+
+                    <div class="collaborations-footer-text">
+
+                        <h3>Amintiri care rămân</h3>
+
+                        <p>
+                            Fiecare etapă a copilăriei merită păstrată.
+                            Ne dorim ca fiecare colaborare să fie o experiență
+                            plăcută pentru copii, părinți și cadre didactice,
+                            cu fotografii care vor fi privite cu drag
+                            peste ani.
+                        </p>
+
+                    </div>
+
+
+                    <a
+                        href="#"
+                        class="collaborations-contact-button"
+                        data-whatsapp-collaborations
+                    >
+                        Discută o colaborare
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         FOOTER
+         ===================================================== -->
+
     <div class="footer-line"></div>
 
     <footer class="footer" id="contact">
@@ -326,12 +635,14 @@
             <span>luciandragomir1993@gmail.com</span>
         </a>
 
+
         <a href="tel:0730548517" class="contact-item phone">
             <svg viewBox="0 0 24 24">
                 <path d="M6 3 H18 Q20 3 20 5 V9 Q20 11 18 11 H16 Q14 11 13 9 L11 7 Q10 6 9 8 L7 10 Q10 15 14 17 L16 15 Q18 14 19 16 L21 18 Q22 20 20 21 Q16 23 11 20 Q5 16 3 10 Q1 5 4 3 Z"/>
             </svg>
             <span>0730 548 517</span>
         </a>
+
 
         <div class="contact-item address">
             <svg viewBox="0 0 24 24">
@@ -341,7 +652,13 @@
             <span>Sediu studio: Filipești de Pădure, str. Eleșteului, nr. 55A</span>
         </div>
 
-        <a href="https://www.instagram.com/luc14nn" target="_blank" rel="noopener noreferrer" class="contact-item instagram">
+
+        <a
+            href="https://www.instagram.com/luc14nn"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="contact-item instagram"
+        >
             <svg viewBox="0 0 24 24">
                 <rect x="3" y="3" width="18" height="18" rx="5"/>
                 <circle cx="12" cy="12" r="4"/>
@@ -350,7 +667,13 @@
             <span>Instagram: Luc14nn</span>
         </a>
 
-        <a href="https://www.facebook.com/share/1dqGhz2PMT/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="contact-item facebook">
+
+        <a
+            href="https://www.facebook.com/share/1dqGhz2PMT/?mibextid=wwXIfr"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="contact-item facebook"
+        >
             <svg viewBox="0 0 24 24">
                 <path d="M14 21 V12 H17 L18 8 H14 V6 Q14 4 16 4 H18 V1 H15 Q10 1 10 6 V8 H7 V12 H10 V21"/>
             </svg>
@@ -359,10 +682,14 @@
 
     </footer>
 
+
     <div class="footer-bottom-line"></div>
 
 </div>
 
+
+<!-- JAVASCRIPT -->
 <script src="script.js"></script>
+
 </body>
 </html>
